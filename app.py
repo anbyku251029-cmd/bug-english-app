@@ -19,7 +19,7 @@ st.markdown("""
         #MainMenu {visibility: hidden;}
         footer {visibility: hidden;}
     </style>
-""", unsafe_allow_index=True)
+""", unsafe_allow_html=True)
 
 # 빌드된 dist/index.html이 있으면 우선 읽고, 없으면 루트의 index.html을 읽습니다.
 html_path = "dist/index.html" if os.path.exists("dist/index.html") else "index.html"
