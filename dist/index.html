@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bug Read & Play - 곤충 영어 나라</title>
+  <!-- 아동 친화적이고 프리미엄한 디자인을 위한 구글 폰트 추가 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Outfit:wght@100..900&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="/assets/index-B6FgHfDT.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-CTuEHl8x.css">
+</head>
+<body>
+  <!-- 전체 앱 그리드 레이아웃 -->
+  <div id="root">
+    <!-- 네비게이션 헤더 -->
+    <header class="app-header">
+      <div class="header-logo" id="btn-home">
+        <span class="logo-emoji">🌿</span>
+        <span class="logo-text">Bug Read & Play</span>
+      </div>
+      
+      <!-- 학습 누적 요약 표시 -->
+      <div class="user-stats">
+        <div class="stat-badge" title="획득한 별">
+          <span class="stat-icon">⭐</span>
+          <span id="header-stars-count">0</span>
+        </div>
+        <div class="stat-badge" title="완료한 곤충 도감">
+          <span class="stat-icon">🐞</span>
+          <span id="header-bugs-count">0/12</span>
+        </div>
+      </div>
+      
+      <!-- 부모 모드 전환 및 모드 인디케이터 -->
+      <div class="header-actions">
+        <button id="btn-parent-mode" class="btn btn-secondary">
+          <span class="btn-icon">👨‍👩‍👧</span>
+          <span class="btn-label">부모 화면</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- 동적 뷰 렌더링 컨테이너 -->
+    <main id="app" class="app-content">
+      <!-- JavaScript로 동적 컴포넌트 렌더링 -->
+      <div class="loading-screen">
+        <div class="spinner"></div>
+        <p>곤충 숲으로 들어가는 중...</p>
+      </div>
+    </main>
+    
+    <!-- 모달 컨테이너 (비밀번호 확인, 배지 팝업 등) -->
+    <div id="modal-overlay" class="modal-overlay hidden">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3 id="modal-title">보호자 확인</h3>
+          <button id="modal-close" class="modal-close-btn">&times;</button>
+        </div>
+        <div class="modal-body" id="modal-body">
+          <!-- 모달 내용 동적 삽입 -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 메인 로직 번들 진입 -->
+</body>
+</html>

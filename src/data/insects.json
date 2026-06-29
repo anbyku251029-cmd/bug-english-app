@@ -1,0 +1,878 @@
+{
+  "ladybug": {
+    "id": "ladybug",
+    "nameKo": "무당벌레",
+    "nameEn": "Ladybug",
+    "icon": "🐞",
+    "levels": {
+      "level1": {
+        "story": [
+          "This is Lucy the Ladybug. She lives on a green leaf.",
+          "Lucy has bright red wings. She has seven black spots.",
+          "Lucy is very hungry today. She looks around for food.",
+          "Look! There are tiny green bugs on the leaf. They are aphids.",
+          "Lucy eats the tiny bugs. Munch, munch! So delicious!",
+          "The green leaf is clean now. Thank you, Lucy!"
+        ]
+      },
+      "level2": {
+        "story": [
+          "Meet Lucy, a tiny ladybug with bright red wings and seven shiny black spots.",
+          "Lucy lives in a big green garden. Her favorite home is a soft rose leaf.",
+          "One sunny morning, Lucy feels very hungry. She flies around to search for breakfast.",
+          "She finds many tiny green insects called aphids. Aphids hurt the beautiful plants.",
+          "Lucy eats the aphids one by one. Munch, munch! She is helping the garden grow healthy.",
+          "With a full tummy, Lucy opens her wings and flies high into the warm sky. Goodbye, Lucy!"
+        ]
+      },
+      "level3": {
+        "story": [
+          "Deep in the green garden, a little beetle named Lucy wakes up. She is a ladybug, a beautiful helper loved by farmers all over the world.",
+          "Lucy has hard, shiny red wings. These outer wings protect her soft body and show off seven black spots that warn birds to stay away.",
+          "Today, Lucy is on a mission. The rose bushes are covered with tiny green pests called aphids. These pests are drinking all the sap and making the roses sick.",
+          "Ladybugs are voracious eaters. Lucy walks slowly under the leaves, catching the aphids with her quick legs and eating them one by one.",
+          "By eating the pests, Lucy keeps the rose plants healthy and strong. She can eat up to five thousand insects during her lifetime!",
+          "After a busy day of cleaning the garden, Lucy climbs to the top of a flower, spreads her wings, and flies away into the sunset."
+        ]
+      },
+      "level4": {
+        "story": [
+          "In the complex ecosystem of our backyard, a miniature superhero named Lucy the Ladybug begins her day. Belonging to the family Coccinellidae, she is a beetle of vital ecological importance.",
+          "Lucy wears a hard, dome-shaped shield. Her bright red coloration, known as aposematic coloring, serves as a natural warning system to alert predators of her bitter, unpleasant taste.",
+          "Underneath her hard elytra lies a pair of delicate wings. Although she flies somewhat clumsily, Lucy can travel long distances in search of plants infested with agricultural pests.",
+          "Today, she patrols the organic tomato garden, which is heavily infested with destructive aphids. These sap-sucking pests damage crops and spread plant diseases.",
+          "As an efficient predator, Lucy consumes dozens of aphids daily. By regulating the pest population naturally, ladybugs eliminate the need for harmful chemical pesticides.",
+          "Through her daily routine, Lucy illustrates the beautiful balance of nature. Having protected the crops, she folds her wings and rests, ready for tomorrow's patrol."
+        ]
+      }
+    },
+    "words": [
+      { "word": "ladybug", "meaning": "무당벌레", "example": "The ladybug is on the flower." },
+      { "word": "wings", "meaning": "날개", "example": "Birds and insects have wings to fly." },
+      { "word": "spots", "meaning": "점/무늬", "example": "A ladybug has black spots." },
+      { "word": "leaf", "meaning": "나뭇잎", "example": "The caterpillar is eating a leaf." },
+      { "word": "insect", "meaning": "곤충", "example": "An ant is a tiny insect." },
+      { "word": "fly", "meaning": "날다", "example": "Ladybugs can fly high." }
+    ],
+    "quiz": [
+      {
+        "question": "What color are Lucy's wings?",
+        "options": ["Red", "Blue", "Green"],
+        "answer": 0
+      },
+      {
+        "question": "What does Lucy like to eat?",
+        "options": ["Leaves", "Tiny insects (aphids)", "Flowers"],
+        "answer": 1
+      }
+    ],
+    "facts": [
+      "7 spots (7개의 검은 점)",
+      "Eats aphids (진딧물을 먹음)",
+      "Can fly (날 수 있음)"
+    ]
+  },
+  "ant": {
+    "id": "ant",
+    "nameKo": "개미",
+    "nameEn": "Ant",
+    "icon": "🐜",
+    "levels": {
+      "level1": {
+        "story": [
+          "This is Andy the Ant. Andy is very small.",
+          "Andy lives in a dark tunnel under the ground.",
+          "Today, Andy finds a big, sweet sugar crystal.",
+          "The sugar is too heavy. Andy cannot lift it alone.",
+          "Andy calls his ant friends. They carry it together.",
+          "They share the sweet food in their big home."
+        ]
+      },
+      "level2": {
+        "story": [
+          "Meet Andy, a tiny black ant who is always busy and hardworking.",
+          "Andy lives in a large underground city with thousands of ant brothers.",
+          "One afternoon, Andy discovers a large, sweet grape dropped on the grass.",
+          "It is much heavier than him, but ants are super strong and never give up.",
+          "Andy taps his friends with his feelers to ask for help.",
+          "Together, the team carries the heavy grape back to their nest."
+        ]
+      },
+      "level3": {
+        "story": [
+          "Beneath the soil of the schoolyard, a worker ant named Andy starts his shift. He belongs to a highly structured family called a colony.",
+          "Andy's job today is foraging. He walks along the forest floor, using his antennae to search for food and feel the vibrations around him.",
+          "He finds a giant slice of apple near a park bench. Andy cannot carry it alone, so he leaves a chemical trail as he runs back home.",
+          "His fellow worker ants smell the chemical trail, called pheromones, and follow Andy back to the apple slice.",
+          "Working as a perfect team, dozens of ants lift the heavy fruit and march back to the nest in a long, neat line.",
+          "Thanks to Andy's discovery and their amazing teamwork, the colony has enough food to feed the baby larvae and the queen for days."
+        ]
+      },
+      "level4": {
+        "story": [
+          "Beneath the surface of the meadow lies a complex underground metropolis ruled by organization and teamwork. Here, we follow Andy, a worker ant of the species Formica.",
+          "Andy belongs to the worker caste, meaning his life is dedicated to foraging, nest maintenance, and caring for the offspring of the queen ant.",
+          "During his patrol, Andy locates a rich source of honeydew dropped by aphids. To communicate this discovery, he lays down an odor trail of chemical pheromones.",
+          "Other foragers detect the trail with their sensitive antennae. Soon, a highly organized supply chain of ants forms, marching in perfect coordination.",
+          "Ants are famous for their mechanical efficiency. They can carry objects up to fifty times their own weight by using specialized neck joints.",
+          "By aerating the soil through tunnel digging and distributing organic matter, Andy and his colony perform vital ecosystem services that keep our soil healthy."
+        ]
+      }
+    },
+    "words": [
+      { "word": "ant", "meaning": "개미", "example": "The ant is carrying a big leaf." },
+      { "word": "small", "meaning": "작은", "example": "An ant is a small insect." },
+      { "word": "ground", "meaning": "땅", "example": "Ants dig tunnels in the ground." },
+      { "word": "carry", "meaning": "나르다/운반하다", "example": "Ants carry food together." },
+      { "word": "strong", "meaning": "힘이 센", "example": "Ants are small but very strong." },
+      { "word": "colony", "meaning": "집단/군집", "example": "Millions of ants live in one colony." }
+    ],
+    "quiz": [
+      {
+        "question": "Where do ants live?",
+        "options": ["In the air", "In the ground", "In the ocean"],
+        "answer": 1
+      },
+      {
+        "question": "How do ants talk to each other?",
+        "options": ["Using phone calls", "Using chemical signals (pheromones)", "Using loud noises"],
+        "answer": 1
+      }
+    ],
+    "facts": [
+      "Live in colonies (군집 생활)",
+      "Super strong (자기 무게의 50배를 운반)",
+      "Use pheromones (페로몬 화학물질로 소통)"
+    ]
+  },
+  "butterfly": {
+    "id": "butterfly",
+    "nameKo": "나비",
+    "nameEn": "Butterfly",
+    "icon": "🦋",
+    "levels": {
+      "level1": {
+        "story": [
+          "This is Bella the Butterfly. She has colorful wings.",
+          "First, Bella was a tiny egg on a leaf.",
+          "Then, she became a hungry caterpillar. Munch, munch!",
+          "Next, she slept in a hard chrysalis cocoon.",
+          "Now, Bella is a beautiful butterfly in the sky.",
+          "She flies to colorful flowers to drink sweet juice."
+        ]
+      },
+      "level2": {
+        "story": [
+          "Bella the butterfly has orange and black wings that shimmer in the sun.",
+          "She remembers when she was a little green caterpillar eating green leaves all day.",
+          "One day, she stopped eating and built a cozy green house called a chrysalis.",
+          "Inside the chrysalis, she changed slowly. She grew legs and wings.",
+          "Finally, the shell popped open, and Bella stretched her brand new wings.",
+          "Now she flies from flower to flower, drinking sweet nectar through a straw-like tongue."
+        ]
+      },
+      "level3": {
+        "story": [
+          "In the warm morning breeze, a beautiful monarch butterfly named Bella flutters her wings. Her life is a story of a magical change.",
+          "Bella started as a tiny egg, hatching into a caterpillar that ate milkweed leaves until she grew large and plump.",
+          "When the time was right, Bella hung upside down and formed a protective shell called a chrysalis to undergo metamorphosis.",
+          "After two weeks of quiet resting, the chrysalis became transparent, and Bella carefully emerged as a fully grown butterfly.",
+          "Her beautiful orange wings have tiny scales that reflect the sunlight and warn hungry birds that she is poisonous to eat.",
+          "Now, Bella spends her days pollinating the garden by carrying pollen from flower to flower while drinking sweet nectar."
+        ]
+      },
+      "level4": {
+        "story": [
+          "Among the most graceful inhabitants of the sky is Bella the Monarch Butterfly. Her lifecycle represents one of nature's most fascinating biological transformations.",
+          "Like all insects in the order Lepidoptera, Bella undergoes complete metamorphosis, transitioning from larva to pupa, and finally to an adult imago.",
+          "During the pupal stage inside the chrysalis, her larval body was broken down and rebuilt into a complex flying organism with compound eyes and wings.",
+          "Her magnificent wings are covered with thousands of microscopic scales. These scales provide thermal insulation, warning patterns, and aerodynamic lift.",
+          "Bella uses a specialized proboscis, a long, coiled mouthpart, to siphon nectar from deep within flowers, acting as an essential pollinator.",
+          "Every autumn, Monarchs embark on a spectacular multi-generational migration of thousands of miles, guided by an internal solar compass."
+        ]
+      }
+    },
+    "words": [
+      { "word": "butterfly", "meaning": "나비", "example": "The butterfly landed on my hand." },
+      { "word": "pretty", "meaning": "예쁜", "example": "Flowers have pretty colors." },
+      { "word": "flower", "meaning": "꽃", "example": "Bees and butterflies love flowers." },
+      { "word": "caterpillar", "meaning": "애벌레", "example": "A caterpillar crawls on a branch." },
+      { "word": "chrysalis", "meaning": "번데기", "example": "The butterfly emerges from the chrysalis." },
+      { "word": "nectar", "meaning": "꽃꿀", "example": "Butterflies use their long tongues to drink nectar." }
+    ],
+    "quiz": [
+      {
+        "question": "What does a butterfly drink from flowers?",
+        "options": ["Water", "Nectar", "Milk"],
+        "answer": 1
+      },
+      {
+        "question": "What is the process of changing from a caterpillar to a butterfly called?",
+        "options": ["Metamorphosis", "Migration", "Hibernation"],
+        "answer": 0
+      }
+    ],
+    "facts": [
+      "Metamorphosis (알-애벌레-번데기-나비 과정)",
+      "Drinks nectar (빨대 모양 주둥이로 꽃꿀을 마심)",
+      "Scales on wings (날개에 고운 비늘이 있어 화려함)"
+    ]
+  },
+  "honeybee": {
+    "id": "honeybee",
+    "nameKo": "꿀벌",
+    "nameEn": "Honeybee",
+    "icon": "🐝",
+    "levels": {
+      "level1": {
+        "story": [
+          "This is Buzz the Honeybee. Buzz wears yellow stripes.",
+          "Buzz flies to flowers. Buzz collects yellow dust called pollen.",
+          "Buzz carries the pollen back to the bee hive.",
+          "Buzz works with thousands of sisters inside the hive.",
+          "Together, they make sweet golden honey for winter.",
+          "Thank you, Buzz, for the sweet honey!"
+        ]
+      },
+      "level2": {
+        "story": [
+          "Meet Buzz, a busy honeybee who wears fuzzy black and yellow stripes.",
+          "Buzz flies from flower to flower, collecting sweet nectar and dusty yellow pollen.",
+          "She stores the sweet nectar in her honey stomach and carries pollen on her back legs.",
+          "When Buzz goes back to the hive, she shares the food with other worker bees.",
+          "Together they dry the nectar with their wings to make sweet golden honey.",
+          "Bees are also great helpers because they pollinate flowers, helping fruits grow."
+        ]
+      },
+      "level3": {
+        "story": [
+          "In a sunny meadow, a worker bee named Buzz starts her morning flight. She belongs to a hive of over fifty thousand bees.",
+          "Buzz is looking for the best flowers. When she finds a patch of sweet clover, she drinks the nectar and stores it in her stomach.",
+          "As she moves, pollen sticks to her fuzzy legs, which she packs into little pollen baskets on her thighs.",
+          "When Buzz returns, she performs a waggle dance to show other bees the exact direction of the flowers.",
+          "Inside the hive, bees turn the nectar into honey by fanning it with their wings to evaporate water.",
+          "Without bees like Buzz to pollinate plants, many of the fruits and vegetables we love would not grow."
+        ]
+      },
+      "level4": {
+        "story": [
+          "Among the most socially sophisticated insects is Buzz the Honeybee, belonging to the species Apis mellifera.",
+          "Buzz is a worker bee, a female dedicated to pollen gathering, comb building, and hive ventilation.",
+          "She collects nectar and pollen, accidentally transferring pollen grains between flowers, which allows plants to reproduce.",
+          "Buzz communicates the precise coordinates of food sources through the waggle dance, adjusting for the sun's movement.",
+          "In the hive, bees process nectar enzymatically and reduce moisture content to produce honey, which never spoils.",
+          "Due to habitat loss and pesticides, bee populations are declining, threatening global biodiversity and agriculture."
+        ]
+      }
+    },
+    "words": [
+      { "word": "honeybee", "meaning": "꿀벌", "example": "A honeybee flew into the garden." },
+      { "word": "honey", "meaning": "꿀", "example": "I put sweet honey on my toast." },
+      { "word": "hive", "meaning": "벌집", "example": "Honeybees live together in a hive." },
+      { "word": "pollen", "meaning": "꽃가루", "example": "Bees carry yellow pollen on their legs." },
+      { "word": "pollinate", "meaning": "수분하다/가루받이하다", "example": "Bees pollinate flowers to make fruits." },
+      { "word": "dance", "meaning": "춤", "example": "Bees talk by doing a special dance." }
+    ],
+    "quiz": [
+      {
+        "question": "What do honeybees collect to make honey?",
+        "options": ["Water and leaves", "Nectar and pollen", "Seeds and soil"],
+        "answer": 1
+      },
+      {
+        "question": "Who rules the honeybee hive?",
+        "options": ["The king bee", "The queen bee", "The soldier bee"],
+        "answer": 1
+      }
+    ],
+    "facts": [
+      "Makes honey (겨울을 나기 위해 꿀을 비축함)",
+      "Waggle dance (춤으로 꿀이 있는 방향을 알림)",
+      "Crucial pollinator (식물이 열매를 맺도록 도움)"
+    ]
+  },
+  "beetle": {
+    "id": "beetle",
+    "nameKo": "장수풍뎅이",
+    "nameEn": "Rhinoceros Beetle",
+    "icon": "🪲",
+    "levels": {
+      "level1": {
+        "story": [
+          "This is Rocky the Beetle. Rocky has a huge horn.",
+          "Rocky lives in a dark oak forest.",
+          "Rocky has a hard, shiny brown shell.",
+          "Rocky climbs trees at night. He drinks sweet tree sap.",
+          "Another beetle comes! Rocky uses his horn to wrestle.",
+          "Rocky wins the battle and eats his sweet tree sap."
+        ]
+      },
+      "level2": {
+        "story": [
+          "Meet Rocky, a rhinoceros beetle named after a rhino because of his giant horn.",
+          "Rocky wears a hard outer shell called an exoskeleton that protects him like armor.",
+          "Rocky sleeps under rotting wood during the day and wakes up at night.",
+          "At night, he climbs oak trees to drink sweet tree sap, his favorite drink.",
+          "Sometimes Rocky must wrestle other male beetles for the best tree sap.",
+          "He uses his powerful horn to lift and throw rivals off the tree branch."
+        ]
+      },
+      "level3": {
+        "story": [
+          "Deep in the oak forest, a giant beetle named Rocky crawls out from beneath the soil. He is a rhinoceros beetle.",
+          "Rocky has a hard exoskeleton made of chitin. On his head is a magnificent Y-shaped horn.",
+          "Rocky is nocturnal. He spends the daylight hours hiding under rotting logs to stay safe from hungry birds.",
+          "When night falls, Rocky flies clumsily toward the top of oak trees, searching for sweet tree sap.",
+          "If another male beetle challenges him, Rocky gets ready to fight. They wrestle on the tree trunk.",
+          "Using his horn as a lever, Rocky flips the rival off the tree. Rocky is the king of the forest!"
+        ]
+      },
+      "level4": {
+        "story": [
+          "Deep within deciduous forests resides Rocky, a rhinoceros beetle of the subfamily Dynastinae.",
+          "Rocky is famous for his incredible strength, capable of lifting objects up to 850 times his body weight.",
+          "His head is equipped with a large horn, a sexually dimorphic trait used primarily during male combat.",
+          "Rocky is nocturnal, emerging after dark to feed on fermenting tree sap and ripe forest fruits.",
+          "During combat, male beetles lock horns on tree trunks, trying to pry their opponent off the bark.",
+          "Rocky's hard shell, the exoskeleton, provides defense and reduces water loss, aiding his survival in the forest."
+        ]
+      }
+    },
+    "words": [
+      { "word": "beetle", "meaning": "딱정벌레/갑충", "example": "A beetle has hard wings." },
+      { "word": "horn", "meaning": "뿔", "example": "The male beetle has a long horn." },
+      { "word": "strong", "meaning": "힘이 센", "example": "The rhinoceros beetle is super strong." },
+      { "word": "wrestle", "meaning": "싸우다/레슬링하다", "example": "Beetles wrestle over food." },
+      { "word": "sap", "meaning": "수액", "example": "Beetles drink sweet tree sap." },
+      { "word": "nocturnal", "meaning": "야행성의", "example": "Nocturnal animals wake up at night." }
+    ],
+    "quiz": [
+      {
+        "question": "What is the rhinoceros beetle named after?",
+        "options": ["An elephant", "A rhinoceros", "A deer"],
+        "answer": 1
+      },
+      {
+        "question": "What is the hard outer shell of a beetle called?",
+        "options": ["Antler", "Skin", "Exoskeleton"],
+        "answer": 2
+      }
+    ],
+    "facts": [
+      "Giant horn (코뿔소를 닮은 큰 머리 뿔)",
+      "Super strength (자기 무게의 800배가 넘는 힘)",
+      "Exoskeleton (단단한 갑옷 같은 키틴질 외골격)"
+    ]
+  },
+  "dragonfly": {
+    "id": "dragonfly",
+    "nameKo": "잠자리",
+    "nameEn": "Dragonfly",
+    "icon": "🛸",
+    "levels": {
+      "level1": {
+        "story": [
+          "This is Drake the Dragonfly. He has four clear wings.",
+          "Drake has two giant eyes. He can see everything.",
+          "Drake flies near the blue pond. He is very fast.",
+          "He can fly forward. He can fly backward, too.",
+          "Look! A mosquito is in the air. Drake zooms in.",
+          "Drake catches the mosquito with his legs. Zap!"
+        ]
+      },
+      "level2": {
+        "story": [
+          "Meet Drake, a colorful dragonfly with four transparent wings and two giant eyes.",
+          "Drake is an amazing flyer who can hover in the air and fly backwards like a helicopter.",
+          "His big eyes are made of thousands of tiny lenses, helping him spot insects easily.",
+          "Before Drake had wings, he lived under the pond water as a baby called a nymph.",
+          "Now, Drake flies above the water, hunting for mosquitoes and gnats.",
+          "He catches his prey in mid-air with his legs shaped like a basket."
+        ]
+      },
+      "level3": {
+        "story": [
+          "Above the calm pond water, a speed champion named Drake patrols the air. He is a dragonfly.",
+          "Drake has four long, transparent wings that move independently, allowing him to fly in any direction.",
+          "His head is almost entirely covered by two massive compound eyes, containing thirty thousand lenses.",
+          "Drake spent the first two years of his life underwater as a nymph, hunting tadpoles and small fish.",
+          "Now an adult, he is a master aerial predator, catching flies and mosquitoes in mid-air.",
+          "By catching thousands of mosquitoes, Drake helps keep the pond area safe and pleasant for everyone."
+        ]
+      },
+      "level4": {
+        "story": [
+          "Hovering above freshwater ecosystems is Drake, a dragonfly belonging to the ancient order Odonata.",
+          "Drake possesses highly advanced flight mechanics, utilizing direct flight muscles to control each wing independently.",
+          "His compound eyes cover almost his entire head, offering an almost 360-degree field of vision.",
+          "He underwent incomplete metamorphosis, spending his larval stage as a predatory aquatic nymph.",
+          "As an adult, Drake has a hunting success rate of ninety-five percent, capturing prey mid-flight.",
+          "His presence is a positive indicator of water quality, making him an important environmental bioindicator."
+        ]
+      }
+    },
+    "words": [
+      { "word": "dragonfly", "meaning": "잠자리", "example": "A dragonfly has blue wings." },
+      { "word": "fast", "meaning": "빠른", "example": "Dragonflies are very fast flyers." },
+      { "word": "backwards", "meaning": "뒤로/역방향으로", "example": "A helicopter can fly backwards." },
+      { "word": "hunter", "meaning": "사냥꾼", "example": "The dragonfly is a sky hunter." },
+      { "word": "nymph", "meaning": "약충(물속 애벌레)", "example": "Dragonfly nymphs live in ponds." },
+      { "word": "compound eyes", "meaning": "겹눈", "example": "Insects have compound eyes to see clearly." }
+    ],
+    "quiz": [
+      {
+        "question": "Which of these is true about dragonfly flight?",
+        "options": ["They can only fly forward", "They can fly in all directions, including backwards", "They cannot fly very fast"],
+        "answer": 1
+      },
+      {
+        "question": "Where do baby dragonflies (nymphs) live?",
+        "options": ["In trees", "In the dirt", "In the water"],
+        "answer": 2
+      }
+    ],
+    "facts": [
+      "Flight master (공중정지, 급회전, 후진 가능)",
+      "30,000 lenses (약 3만 개의 낱눈이 뭉친 겹눈)",
+      "Nymph in water (물속에서 물고기 새끼 등을 사냥)"
+    ]
+  },
+  "grasshopper": {
+    "id": "grasshopper",
+    "nameKo": "메뚜기",
+    "nameEn": "Grasshopper",
+    "icon": "🦗",
+    "levels": {
+      "level1": {
+        "story": [
+          "This is Greeny the Grasshopper. He lives in the grass.",
+          "Greeny is bright green. He can hide in the leaves.",
+          "Greeny has long back legs. They are very strong.",
+          "A hungry frog sits nearby! Greeny needs to move.",
+          "Greeny jumps high in the air. Boing!",
+          "Greeny lands safely in the soft clover. Hurrah!"
+        ]
+      },
+      "level2": {
+        "story": [
+          "Meet Greeny, a bright green grasshopper who loves jumping through the fields.",
+          "Greeny uses his green body to camouflage and hide from hungry birds in the garden.",
+          "He has powerful hind legs that work like springboards, launching him high.",
+          "Greeny is a herbivore, which means he loves chewing on green leaves and grass.",
+          "When Greeny rubs his long back legs against his wings, he makes a chirping sound.",
+          "He jumps far away whenever he feels danger, escaping to a safe spot."
+        ]
+      },
+      "level3": {
+        "story": [
+          "In the tall grass of the meadow, a long-legged jumper named Greeny wakes up. He is a grasshopper.",
+          "Greeny's green color helps him blend in with the leaves, hiding him from predators like frogs and birds.",
+          "Greeny has large hind legs that store energy like a rubber band before launching him into the air.",
+          "He can leap up to twenty times his body length, which is like a human jumping over a house!",
+          "To talk to other grasshoppers, Greeny rubs his legs against his wings, creating a musical chirping sound.",
+          "By eating grass, Greeny helps recycle plant nutrients, playing his role in the meadow ecosystem."
+        ]
+      },
+      "level4": {
+        "story": [
+          "Inhabiting grasslands worldwide is Greeny the Grasshopper, a member of the suborder Caelifera.",
+          "Greeny is an herbivore with chewing mandibles adapted for consuming grass, leaves, and crops.",
+          "His primary defense is camouflage, supplemented by powerful hind legs modified for saltatorial locomotion.",
+          "These hind legs store elastic energy in the cuticle, releasing it to launch the insect rapidly from danger.",
+          "Greeny produces sound via stridulation, rubbing specialized ridges on his hind legs against his forewings.",
+          "Under crowded conditions, some grasshopper species undergo physical changes and form destructive swarms called locusts."
+        ]
+      }
+    },
+    "words": [
+      { "word": "grasshopper", "meaning": "메뚜기", "example": "A grasshopper jumped on my shoe." },
+      { "word": "powerful", "meaning": "강력한/힘이 센", "example": "Bears have powerful claws." },
+      { "word": "escape", "meaning": "탈출하다/도망치다", "example": "The mouse escaped from the cat." },
+      { "word": "herbivore", "meaning": "초식동물", "example": "Rabbits are herbivores." },
+      { "word": "rub", "meaning": "비비다/마찰하다", "example": "Rub your hands to make them warm." },
+      { "word": "swarm", "meaning": "무리/떼", "example": "A swarm of locusts covered the sky." }
+    ],
+    "quiz": [
+      {
+        "question": "What do grasshoppers eat?",
+        "options": ["Other insects", "Plants and leaves", "Fish and frogs"],
+        "answer": 1
+      },
+      {
+        "question": "How do grasshoppers make music/sounds?",
+        "options": ["By clapping their hands", "By singing with their mouth", "By rubbing their legs on wings"],
+        "answer": 2
+      }
+    ],
+    "facts": [
+      "Jumping catapult (자기 몸의 20배 높이 점프)",
+      "Stridulation (뒷다리와 날개를 비벼 소리 냄)",
+      "Locust morph (조건이 맞으면 떼를 지어 이동함)"
+    ]
+  },
+  "mantis": {
+    "id": "mantis",
+    "nameKo": "사마귀",
+    "nameEn": "Praying Mantis",
+    "icon": "🎋",
+    "levels": {
+      "level1": {
+        "story": [
+          "This is Manny the Mantis. He is a green hunter.",
+          "Manny sits on a twig. He holds his front legs high.",
+          "He looks like he is praying. But he is waiting.",
+          "A fly buzzes near Manny. Manny stays very still.",
+          "Manny turns his head to look. Then, he strikes. Zap!",
+          "Manny catches the fly with his sharp front legs."
+        ]
+      },
+      "level2": {
+        "story": [
+          "Meet Manny, a praying mantis who is a master of disguise in the garden.",
+          "Manny gets his name because he folds his front legs as if he is praying.",
+          "He has sharp spikes on his front legs to grab other insects tightly.",
+          "Manny is green and shape-like a leaf, so other bugs do not see him waiting.",
+          "He can turn his head 180 degrees, looking all the way behind him.",
+          "When a bug flies too close, Manny strikes with lightning speed and catches it."
+        ]
+      },
+      "level3": {
+        "story": [
+          "Quietly perched on a rose branch, a patient predator named Manny waits. He is a praying mantis.",
+          "Manny is a master of camouflage. His green, leaf-like body makes him invisible to both prey and predators.",
+          "Manny has raptorial front legs equipped with sharp spines designed to trap insects instantly.",
+          "He is the only insect that can turn its head 180 degrees to look over its shoulder.",
+          "Using his stereo vision, Manny measures the exact distance to a cricket sitting nearby.",
+          "In a split second, Manny strikes, capturing his dinner. The garden patrol has succeeded!"
+        ]
+      },
+      "level4": {
+        "story": [
+          "Perched in the garden canopy is Manny the Praying Mantis, a predatory insect of the order Mantodea.",
+          "Manny is a carnivorous ambush predator, relying on camouflage to blend in with foliage.",
+          "His front legs are highly modified raptorial limbs, lined with spines to grip struggling prey.",
+          "Manny possesses a flexible joint allowing a 180-degree head rotation, unique among known insect species.",
+          "His compound eyes are widely spaced, providing binocular vision and depth perception crucial for striking.",
+          "By consuming herbivorous pests, mantises act as biological control agents, maintaining garden health."
+        ]
+      }
+    },
+    "words": [
+      { "word": "mantis", "meaning": "사마귀", "example": "A mantis is waiting on the leaf." },
+      { "word": "pray", "meaning": "기도하다", "example": "The mantis looks like it is praying." },
+      { "word": "spikes", "meaning": "가시/뾰족한 돌기", "example": "Its legs have sharp spikes." },
+      { "word": "camouflage", "meaning": "위장", "example": "Animals use camouflage to hide." },
+      { "word": "prey", "meaning": "먹이/사냥감", "example": "The frog caught its prey." },
+      { "word": "strike", "meaning": "공격하다/치다", "example": "The mantis strikes very quickly." }
+    ],
+    "quiz": [
+      {
+        "question": "Why is the mantis called a 'praying' mantis?",
+        "options": ["Because it holds its front legs like it is praying", "Because it is very peaceful", "Because it lives in churches"],
+        "answer": 0
+      },
+      {
+        "question": "What is special about the neck of a mantis?",
+        "options": ["It cannot move", "It can turn its head 180 degrees", "It is very long like a giraffe"],
+        "answer": 1
+      }
+    ],
+    "facts": [
+      "Raptorial legs (가시가 달린 앞다리로 사냥)",
+      "180-degree turn (머리를 180도 회전하는 유일한 곤충)",
+      "Stereo vision (입체시를 가져 거리를 정확히 측정)"
+    ]
+  },
+  "cicada": {
+    "id": "cicada",
+    "nameKo": "매미",
+    "nameEn": "Cicada",
+    "icon": "📣",
+    "levels": {
+      "level1": {
+        "story": [
+          "This is Cecil the Cicada. Cecil sings in summer.",
+          "Cecil lived underground as a baby. He drank root juice.",
+          "One summer night, Cecil crawled up an oak tree.",
+          "Cecil shed his old skin. He grew clear wings.",
+          "Now Cecil sings in the tree. He goes shane-shane!",
+          "Cecil sings a loud song to find his friends."
+        ]
+      },
+      "level2": {
+        "story": [
+          "Meet Cecil, a loud summer singer who lives high in the green trees.",
+          "Cecil spent many years underground as a baby nymph, sucking tree root juice.",
+          "One warm summer night, he dug out of the soil and climbed up a tree trunk.",
+          "He cracked open his old brown shell and stepped out with brand new wings.",
+          "Now Cecil vibrates special drums on his tummy to make a very loud sound.",
+          "He sings all day long with his friends to enjoy the warm summer sun."
+        ]
+      },
+      "level3": {
+        "story": [
+          "As the summer sun heats the forest, Cecil the Cicada begins his loud song from a high branch.",
+          "Cecil spent seven long years underground as a nymph, drinking sap from tree roots in the dark.",
+          "When summer arrived, Cecil dug his way out, crawled up a tree, and shed his old exoskeleton.",
+          "Leaving his empty brown shell behind, Cecil emerged with soft wings that soon dried and hardened.",
+          "Cecil is a male cicada. He vibrates organs on his abdomen called tymbals to sing a loud song.",
+          "Though he only lives for a few weeks as an adult, Cecil fills the hot summer days with music."
+        ]
+      },
+      "level4": {
+        "story": [
+          "Echoing through the forest canopy is the rhythmic song of Cecil the Cicada, of the order Hemiptera.",
+          "Cecil underwent incomplete metamorphosis, spending years underground as a fossorial nymph.",
+          "During this subterranean phase, he fed exclusively on xylem sap extracted from plant roots.",
+          "Upon emerging, Cecil shed his final nymphal skin on a tree trunk, transitioning to an winged adult.",
+          "Cecil vibrates internal membranes called tymbals in his hollow abdomen to produce his loud call.",
+          "This acoustic signal, which can exceed one hundred decibels, is used to attract mates during summer."
+        ]
+      }
+    },
+    "words": [
+      { "word": "cicada", "meaning": "매미", "example": "We can hear cicadas in July." },
+      { "word": "loudly", "meaning": "크게/시끄럽게", "example": "Please do not speak loudly in the library." },
+      { "word": "shed", "meaning": "벗다/떨어뜨리다", "example": "Snake sheds its skin to grow." },
+      { "word": "root", "meaning": "뿌리", "example": "Tree roots drink water from the soil." },
+      { "word": "emerge", "meaning": "나타나다/나오다", "example": "The sun emerged from behind the clouds." },
+      { "word": "tymbal", "meaning": "진동막(발음기관)", "example": "Male cicadas vibrate their tymbals." }
+    ],
+    "quiz": [
+      {
+        "question": "Which cicadas make the loud summer singing sound?",
+        "options": ["Only males", "Only females", "Both males and females"],
+        "answer": 0
+      },
+      {
+        "question": "Where do cicadas live most of their lives?",
+        "options": ["On tree branches", "Underground near roots", "In the clouds"],
+        "answer": 1
+      }
+    ],
+    "facts": [
+      "Tymbal organ (배 밑의 진동막으로 큰 소리를 냄)",
+      "Years underground (수년에서 17년까지 땅속에서 삼)",
+      "Short adult life (성충이 되면 한 달 남짓 살다 감)"
+    ]
+  },
+  "firefly": {
+    "id": "firefly",
+    "nameKo": "반딧불이",
+    "nameEn": "Firefly",
+    "icon": "✨",
+    "levels": {
+      "level1": {
+        "story": [
+          "This is Flicker the Firefly. Flicker flies at night.",
+          "Flicker has a yellow lantern in his tummy.",
+          "The lantern glows in the dark. It is not hot.",
+          "Flicker blinks his light. Blink, blink!",
+          "Another firefly blinks back from the dark woods.",
+          "They meet and dance together in the summer night."
+        ]
+      },
+      "level2": {
+        "story": [
+          "Meet Flicker, a magical firefly who lights up the dark summer forest.",
+          "Flicker has a special glowing organ in his tail that makes yellow-green light.",
+          "His light is called a 'cold light' because it does not make any heat at all.",
+          "Flicker blinks his light in a special rhythm to talk to his forest friends.",
+          "When other fireflies see his flashes, they blink back to say hello.",
+          "Together they create a beautiful light show above the grass at night."
+        ]
+      },
+      "level3": {
+        "story": [
+          "Under the dark canopy of the summer forest, a tiny lantern named Flicker flies. He is a firefly.",
+          "Flicker produces light in his abdomen through a chemical reaction. This is called bioluminescence.",
+          "Unlike lightbulbs, Flicker's light is highly efficient and cold, meaning it wastes no energy as heat.",
+          "Flicker uses his light to communicate in the dark. He flashes a unique code to find a mate.",
+          "His bright flashes also warn frogs and spiders that he tastes bad and should not be eaten.",
+          "By filling the dark night with glowing sparks, fireflies bring magic to the summer fields."
+        ]
+      },
+      "level4": {
+        "story": [
+          "Illuminating the nocturnal forest is Flicker the Firefly, a beetle of the family Lampyridae.",
+          "Flicker produces light via bioluminescence, a chemical process involving luciferin and oxygen.",
+          "This enzymatic reaction, assisted by the luciferase enzyme, creates a highly efficient cold light.",
+          "Flicker flashes in specific intervals to advertise availability to mates in the understory.",
+          "The light also serves as an warning signal to deter predators from consuming his toxic body.",
+          "Firefly populations are threatened by light pollution, which disrupts their complex mating signals."
+        ]
+      }
+    },
+    "words": [
+      { "word": "firefly", "meaning": "반딧불이/개똥벌레", "example": "I saw fireflies in the forest." },
+      { "word": "glow", "meaning": "빛나다/불빛을 내다", "example": "Stars glow in the night sky." },
+      { "word": "blink", "meaning": "깜빡이다", "example": "Blink your eyes twice." },
+      { "word": "bioluminescence", "meaning": "생물 발광", "example": "Deep sea fish use bioluminescence." },
+      { "word": "cold light", "meaning": "냉광(열이 없는 빛)", "example": "Firefly light is a highly efficient cold light." },
+      { "word": "chemical", "meaning": "화학적인/화학물질", "example": "Luciferin is a natural chemical." }
+    ],
+    "quiz": [
+      {
+        "question": "Why is the firefly's light called 'cold light'?",
+        "options": ["Because it is ice cold", "Because it does not produce any heat", "Because it only glows in winter"],
+        "answer": 1
+      },
+      {
+        "question": "What is the firefly's light-making chemical called?",
+        "options": ["Luciferin", "Water", "Sugar"],
+        "answer": 0
+      }
+    ],
+    "facts": [
+      "Bioluminescence (화학물질로 100% 가깝게 불빛 전환)",
+      "Cold light (열이 나지 않아 화상을 입지 않음)",
+      "Blink pattern (종류마다 반짝이는 횟수와 주기가 다름)"
+    ]
+  },
+  "stagbeetle": {
+    "id": "stagbeetle",
+    "nameKo": "사슴벌레",
+    "nameEn": "Stag Beetle",
+    "icon": "🪵",
+    "levels": {
+      "level1": {
+        "story": [
+          "This is Spike the Stag Beetle. He has big jaws.",
+          "His jaws look like the antlers of a deer.",
+          "Spike has a shiny black body. He is strong.",
+          "Spike crawls on a rotting log to find tree sap.",
+          "A rival beetle blocks the way. Spike opens his jaws.",
+          "He lifts the rival and flips him off. The road is clear!"
+        ]
+      },
+      "level2": {
+        "story": [
+          "Meet Spike, a stag beetle with giant pincers on his head that look like deer antlers.",
+          "Spike uses his big jaws to wrestle other beetles, not for eating food.",
+          "Spike was born inside a soft rotting log, where he ate wood as a baby grub.",
+          "Now an adult, he flies through the oak forest at night looking for sweet tree sap.",
+          "When he meets a rival beetle on a branch, they lock jaws in a wrestling match.",
+          "Spike wins by lifting his opponent and throwing him off the branch."
+        ]
+      },
+      "level3": {
+        "story": [
+          "Beneath the bark of an old oak tree, a dark warrior named Spike prepares to fight. He is a stag beetle.",
+          "Spike is famous for his oversized mandibles, which resemble the branch-like antlers of a male deer.",
+          "Spike spent three years living inside decaying wood as a grub, slowly growing into a strong adult.",
+          "Now he climbs the trees at night, seeking sweet tree sap and defending his feeding territory.",
+          "When a rival stag beetle challenges him, they lock their massive mandibles in a test of strength.",
+          "With a powerful lift, Spike tosses the rival off the bark, retaining his spot on the sap flow."
+        ]
+      },
+      "level4": {
+        "story": [
+          "Inhabiting ancient oak woodlands is Spike the Stag Beetle, of the family Lucanidae.",
+          "Spike exhibits extreme sexual dimorphism, with males possessing highly enlarged mandibles.",
+          "These jaws are used as weapons in combat over territories and access to sap flows.",
+          "Spike spent several years as an aquatic-like larva feeding on decomposing wood fiber.",
+          "During battles, males attempt to leverage their mandibles under the opponent to throw them off balance.",
+          "Stag beetles are saproxylic insects, essential for recycling nutrients from decaying wood back into the soil."
+        ]
+      }
+    },
+    "words": [
+      { "word": "stag beetle", "meaning": "사슴벌레", "example": "The stag beetle has shiny black shell." },
+      { "word": "jaw", "meaning": "턱/집게", "example": "A stag beetle has strong jaws." },
+      { "word": "antler", "meaning": "사슴뿔", "example": "A deer has beautiful antlers." },
+      { "word": "rival", "meaning": "경쟁자", "example": "The two beetles fought the rival." },
+      { "word": "grub", "meaning": "굼벵이(애벌레)", "example": "The grub is chewing on soft wood." },
+      { "word": "mandibles", "meaning": "구강 집게(대악)", "example": "Male beetles have extended mandibles." }
+    ],
+    "quiz": [
+      {
+        "question": "What do the male stag beetle's big jaws look like?",
+        "options": ["Wings of a bird", "Antlers of a deer", "Trunk of an elephant"],
+        "answer": 1
+      },
+      {
+        "question": "What do stag beetle babies (grubs) eat?",
+        "options": ["Rotting wood", "Sweet nectar", "Other insects"],
+        "answer": 0
+      }
+    ],
+    "facts": [
+      "Deer antlers (수컷의 큰 턱은 사슴의 뿔을 닮음)",
+      "Deadwood home (썩은 참나무 밑둥에 알을 낳음)",
+      "Asian favorite (한국, 일본 등에서 인기 높은 애완곤충)"
+    ]
+  },
+  "spider": {
+    "id": "spider",
+    "nameKo": "거미",
+    "nameEn": "Spider",
+    "icon": "🕸️",
+    "levels": {
+      "level1": {
+        "story": [
+          "This is Spinner the Spider. He is not an insect.",
+          "Spinner has eight long legs. He has no wings.",
+          "Spinner spins a beautiful silk web on the twigs.",
+          "His web is sticky. It catches flying insects.",
+          "Look! A mosquito is caught in the sticky web.",
+          "Spinner wraps it in soft silk. Dinner is ready!"
+        ]
+      },
+      "level2": {
+        "story": [
+          "Meet Spinner, a clever spider who is a busy engineer in the garden.",
+          "Spinner is not an insect because he has eight legs and two body segments.",
+          "Spinner spins a web using silk that comes out of spinnerets on his tail.",
+          "The silk web is very strong and sticky to trap flying insects like mosquitoes.",
+          "Spinner walks carefully on the non-sticky lines of his web to stay safe.",
+          "By catching annoying pests, Spinner helps keep the garden nice and clean."
+        ]
+      },
+      "level3": {
+        "story": [
+          "Between two rose bushes, a clever builder named Spinner spins a masterpiece. He is an orb-weaver spider.",
+          "Spinner is an arachnid, differing from insects because he has eight legs, no antennae, and no wings.",
+          "Spinner produces liquid silk from spinnerets on his abdomen, which turns solid when exposed to air.",
+          "His spider silk is incredibly strong and flexible, capable of catching heavy insects without breaking.",
+          "Spinner sits in the center of the web, waiting to feel vibrations that signal caught prey.",
+          "By consuming flies, gnats, and mosquitoes, spiders act as natural pest controllers in the backyard."
+        ]
+      },
+      "level4": {
+        "story": [
+          "Weaving complex webs in the garden is Spinner the Spider, belonging to the class Arachnida.",
+          "Spinner differs from insects by having two body parts (cephalothorax and abdomen) and eight walking legs.",
+          "He synthesizes liquid proteins in silk glands, extruding them through spinnerets to form solid silk.",
+          "This spider silk is renowned for its high tensile strength, exceeding that of steel by weight.",
+          "Spinner senses vibrations on the web to detect trapped prey, wrapping them in silk to preserve them.",
+          "As apex micro-predators, spiders are essential for regulating insect populations in terrestrial ecosystems."
+        ]
+      }
+    },
+    "words": [
+      { "word": "spider", "meaning": "거미", "example": "A spider is building a web in the corner." },
+      { "word": "web", "meaning": "거미줄", "example": "The spider caught a fly in its web." },
+      { "word": "legs", "meaning": "다리", "example": "All insects have six legs." },
+      { "word": "arachnid", "meaning": "거미류", "example": "Spiders and scorpions are arachnids." },
+      { "word": "silk", "meaning": "거미실/비단", "example": "Spider silk is incredibly strong." },
+      { "word": "predator", "meaning": "포식자", "example": "Lions and spiders are predators." }
+    ],
+    "quiz": [
+      {
+        "question": "Why is a spider NOT an insect?",
+        "options": ["Because it has eight legs and two body parts", "Because it can fly", "Because it is too big"],
+        "answer": 0
+      },
+      {
+        "question": "How strong is spider silk compared to steel of the same thickness?",
+        "options": ["It is weaker", "It is stronger", "They are exactly the same"],
+        "answer": 1
+      }
+    ],
+    "facts": [
+      "Not an insect (다리가 8개로 곤충과 다름)",
+      "Super silk (강철보다 질기고 매우 신축성 있음)",
+      "Pest control (모기, 파리 등 해충을 잡아먹는 고마운 동물)"
+    ]
+  }
+}
