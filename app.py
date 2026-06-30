@@ -42,7 +42,26 @@ st.markdown("""
     html, body, [data-testid="stAppViewContainer"] {
         font-family: 'Fredoka', 'Noto Sans KR', sans-serif;
         background: linear-gradient(135deg, #f4f9f4 0%, #e8f5e9 50%, #c8e6c9 100%);
-        color: #1b2e1e;
+        color: #000000 !important;
+    }
+    
+    /* 모든 텍스트 요소 검은색 적용 */
+    h1, h2, h3, h4, h5, h6, p, span, label, li,
+    [data-testid="stWidgetLabel"], 
+    [data-testid="stMarkdownContainer"],
+    .stMarkdown,
+    .stMetric div,
+    .stRadio label,
+    .stSelectbox label,
+    .stSlider label,
+    .stTextInput label,
+    .stNumberInput label,
+    .stColorPicker label,
+    .insect-card,
+    .book-page-style-left,
+    .book-page-style-right,
+    .badge-cabinet {
+        color: #000000 !important;
     }
     
     /* 곤충 카드 디자인 */
@@ -104,7 +123,7 @@ st.markdown("""
         font-family: 'Fredoka', 'Noto Sans KR', sans-serif !important;
         border: 2px solid rgba(46, 125, 50, 0.2) !important;
         background-color: white !important;
-        color: #2e7d32 !important;
+        color: #000000 !important;
         padding: 6px 16px !important;
         transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
         box-shadow: 0 4px 6px rgba(46, 125, 50, 0.05) !important;
@@ -115,20 +134,20 @@ st.markdown("""
         box-shadow: 0 8px 16px rgba(46, 125, 50, 0.15) !important;
         border-color: #2e7d32 !important;
         background-color: #e8f5e9 !important;
-        color: #1b5e20 !important;
+        color: #000000 !important;
     }
     
-    /* primary 버튼 커스텀 */
+    /* primary 버튼 커스텀 (배경을 밝은 연두색으로 변경하여 글자색 검은색 유지 및 가독성 확보) */
     div.stButton > button[kind="primary"] {
-        background-color: #2e7d32 !important;
-        color: white !important;
+        background-color: #c8e6c9 !important;
+        color: #000000 !important;
         border: 2px solid #2e7d32 !important;
     }
     
     div.stButton > button[kind="primary"]:hover {
-        background-color: #1b5e20 !important;
+        background-color: #a5d6a7 !important;
         border-color: #1b5e20 !important;
-        color: white !important;
+        color: #000000 !important;
     }
     
     /* 탭 디자인 커스텀 (Streamlit 기본 탭 선택기 숨기기 혹은 커스텀용) */
@@ -333,16 +352,16 @@ def render_home_view():
                 st.markdown(f"""
                 <div style="text-align: center; background: #fffde7; padding: 16px; border-radius: 16px; border: 2px solid #ffb300; box-shadow: 0 4px 8px rgba(0,0,0,0.05);">
                     <div style="font-size: 2.2rem; margin-bottom: 4px;">{b_info['emoji']}</div>
-                    <div style="font-size: 0.9rem; font-weight: bold; color: #1b2e1e;">{b_info['name'].split(' ')[0]}</div>
-                    <div style="font-size: 0.75rem; color: #556b2f;">{b_info['desc']}</div>
+                    <div style="font-size: 0.9rem; font-weight: bold; color: #000000;">{b_info['name'].split(' ')[0]}</div>
+                    <div style="font-size: 0.75rem; color: #000000;">{b_info['desc']}</div>
                 </div>
                 """, unsafe_allow_html=True)
             else:
                 st.markdown(f"""
-                <div style="text-align: center; background: rgba(0,0,0,0.03); padding: 16px; border-radius: 16px; border: 2px dashed #ccc; opacity: 0.45;">
+                <div style="text-align: center; background: rgba(0,0,0,0.03); padding: 16px; border-radius: 16px; border: 2px dashed #ccc;">
                     <div style="font-size: 2.2rem; margin-bottom: 4px;">🔒</div>
-                    <div style="font-size: 0.9rem; font-weight: bold; color: #888;">잠김</div>
-                    <div style="font-size: 0.75rem; color: #999;">{b_info['desc']}</div>
+                    <div style="font-size: 0.9rem; font-weight: bold; color: #000000;">잠김</div>
+                    <div style="font-size: 0.75rem; color: #000000;">{b_info['desc']}</div>
                 </div>
                 """, unsafe_allow_html=True)
 
@@ -364,10 +383,10 @@ def render_level_view():
             st.markdown(f"""
             <div style="background: white; border-radius: 16px; padding: 20px; border: 2px solid rgba(46,125,50,0.1); text-align: center; min-height: 240px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); display:flex; flex-direction:column; justify-content:space-between;">
                 <div>
-                    <h2 style="margin: 0 0 6px 0; color: var(--primary);">{lv}</h2>
-                    <span style="background: var(--primary-light); color: var(--primary-dark); padding: 4px 10px; border-radius: 12px; font-size: 0.8rem; font-weight: bold;">{target}</span>
-                    <h5 style="margin: 16px 0 8px 0; color: #1b2e1e;">{title}</h5>
-                    <p style="font-size: 0.85rem; color: var(--text-light); line-height: 1.4; margin: 0;">{desc}</p>
+                    <h2 style="margin: 0 0 6px 0; color: #000000;">{lv}</h2>
+                    <span style="background: var(--primary-light); color: #000000; padding: 4px 10px; border-radius: 12px; font-size: 0.8rem; font-weight: bold;">{target}</span>
+                    <h5 style="margin: 16px 0 8px 0; color: #000000;">{title}</h5>
+                    <p style="font-size: 0.85rem; color: #000000; line-height: 1.4; margin: 0;">{desc}</p>
                 </div>
             </div>
             """, unsafe_allow_html=True)
@@ -437,8 +456,8 @@ def render_book_tab(bug):
     with col1:
         st.markdown(f"""
         <div class="book-page-style-left">
-            <h5 style="color:var(--primary); margin:0;">Page {st.session_state.story_page + 1}</h5>
-            <p style="font-size: 1.4rem; line-height: 1.6; text-align: center; color: var(--text-dark); min-height: 180px; display:flex; align-items:center; justify-content:center;">
+            <h5 style="color:#000000; margin:0;">Page {st.session_state.story_page + 1}</h5>
+            <p style="font-size: 1.4rem; line-height: 1.6; text-align: center; color: #000000; min-height: 180px; display:flex; align-items:center; justify-content:center;">
                 {left_text}
             </p>
             <div></div>
@@ -456,8 +475,8 @@ def render_book_tab(bug):
         if right_text:
             st.markdown(f"""
             <div class="book-page-style-right">
-                <h5 style="color:var(--primary); margin:0; text-align:right;">Page {st.session_state.story_page + 2}</h5>
-                <p style="font-size: 1.4rem; line-height: 1.6; text-align: center; color: var(--text-dark); min-height: 180px; display:flex; align-items:center; justify-content:center;">
+                <h5 style="color:#000000; margin:0; text-align:right;">Page {st.session_state.story_page + 2}</h5>
+                <p style="font-size: 1.4rem; line-height: 1.6; text-align: center; color: #000000; min-height: 180px; display:flex; align-items:center; justify-content:center;">
                     {right_text}
                 </p>
                 <div></div>
@@ -471,7 +490,7 @@ def render_book_tab(bug):
         else:
             st.markdown(f"""
             <div class="book-page-style-right" style="justify-content:center; align-items:center; text-align:center;">
-                <h3 style="color:#ccc;">The End 🌿</h3>
+                <h3 style="color:#000000;">The End 🌿</h3>
             </div>
             """, unsafe_allow_html=True)
 
@@ -1184,7 +1203,7 @@ def render_parent_gate_view():
 
 # 13. 학부모 대시보드 뷰
 def render_parent_view():
-    st.markdown("## 👨‍👩‍👧 학부모 관리 대시보드 <span style='font-size:1rem; color:#888; font-weight:normal;'>v1.1.1</span>", unsafe_allow_html=True)
+    st.markdown("## 👨‍👩‍👧 학부모 관리 대시보드 <span style='font-size:1rem; color:#000000; font-weight:normal;'>v1.1.1</span>", unsafe_allow_html=True)
     st.write("자녀의 곤충 영어 학습 이력과 직접 그린 그림 작품집을 확인할 수 있습니다.")
 
     # 1. 학습 통계 요약
