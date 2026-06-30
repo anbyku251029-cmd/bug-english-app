@@ -29,7 +29,7 @@ except ImportError as e:
 
 # 2. 스트림릿 기본 페이지 설정
 st.set_page_config(
-    page_title="Bug Read & Play - 곤충 영어 나라 V1.1",
+    page_title="Bug Read & Play - 곤충 영어 나라 V1.1.1",
     page_icon="🌿",
     layout="wide"
 )
@@ -193,7 +193,7 @@ if "selected_insect" not in st.session_state:
 if "selected_level" not in st.session_state:
     st.session_state.selected_level = "level1"
 if "active_tab" not in st.session_state:
-    st.session_state.active_tab = "🐞 그림책 읽기"
+    st.session_state.active_tab = "그림책 읽기"
 if "story_page" not in st.session_state:
     st.session_state.story_page = 0
 if "chat_history" not in st.session_state:
@@ -272,7 +272,7 @@ def render_header():
     h_col1, h_col2, h_col3 = st.columns([4, 3, 2.5])
     with h_col1:
         st.markdown(
-            f"<h2 style='margin:0; font-family:var(--font-fun); cursor:pointer;' onclick='window.location.reload()'>🌿 Bug Read & Play <span style='font-size:0.9rem; background:#2e7d32; color:white; padding:2px 8px; border-radius:12px; vertical-align:middle; font-weight:bold; margin-left:6px;'>V1.1</span></h2>", 
+            f"<h2 style='margin:0; font-family:var(--font-fun); cursor:pointer;' onclick='window.location.reload()'>🌿 Bug Read & Play <span style='font-size:0.9rem; background:#2e7d32; color:white; padding:2px 8px; border-radius:12px; vertical-align:middle; font-weight:bold; margin-left:6px;'>V1.1.1</span></h2>", 
             unsafe_allow_html=True
         )
     with h_col2:
@@ -284,54 +284,35 @@ def render_header():
         btn_col1, btn_col2 = st.columns(2)
         with btn_col1:
             is_home_active = st.session_state.current_view != "home"
-            if st.button("🐞 홈", use_container_width=True, disabled=not is_home_active, key="header_home_btn"):
+            if st.button("🏠 홈", use_container_width=True, disabled=not is_home_active, key="header_home_btn"):
                 st.session_state.current_view = "home"
                 st.session_state.selected_insect = None
                 st.session_state.story_page = 0
                 st.rerun()
         with btn_col2:
             if st.session_state.current_view in ["parent", "parent_gate"]:
-                if st.button("🐜 자녀 홈", use_container_width=True, key="header_child_home_btn"):
+                if st.button("🏠 자녀 홈", use_container_width=True, key="header_child_home_btn"):
                     st.session_state.current_view = "home"
                     st.session_state.selected_insect = None
                     st.session_state.story_page = 0
                     st.rerun()
             else:
-                if st.button("🐝 부모방", use_container_width=True, key="header_parent_btn"):
+                if st.button("👤 부모방", use_container_width=True, key="header_parent_btn"):
                     st.session_state.current_view = "parent_gate"
                     st.rerun()
     st.markdown("---")
 
 # 9. 메인 홈 뷰 (곤충 카드 및 배지 진열장)
 def render_home_view():
-    st.markdown("<div style='text-align:center; margin-bottom: 24px;'><h1>🐞 곤충 영어 리딩 나라 V1.1</h1><p>더 깜찍해진 곤충 친구들과 함께 즐거운 영어 리딩과 독후 활동을 시작해 보세요.</p></div>", unsafe_allow_html=True)
+    st.markdown("<div style='text-align:center; margin-bottom: 24px;'><h1>🐞 곤충 영어 리딩 나라 V1.1.1</h1><p>더 깜찍해진 곤충 친구들과 함께 즐거운 영어 리딩과 독후 활동을 시작해 보세요.</p></div>", unsafe_allow_html=True)
     
     # 곤충 카드 그리드 (3열 배치)
     cols = st.columns(3)
     for idx, (key, bug) in enumerate(insects_data.items()):
         col = cols[idx % 3]
-        prog = user_data["progress"].get(key, {"read": False, "quiz": False, "activity": False})
-        stars = sum(1 for k, v in prog.items() if v)
-        star_str = "⭐" * stars + "☆" * (3 - stars)
         
         with col:
-            st.markdown(f"""
-            <div class="insect-card">
-                <div style="font-size: 3.5rem; margin-bottom: 8px;">{bug['icon']}</div>
-                <h3 style="margin: 0; color: var(--primary-dark);">{bug['nameEn']}</h3>
-                <p style="margin: 4px 0 10px 0; color: var(--text-light); font-weight:600;">{bug['nameKo']}</p>
-                <div style="color: var(--accent); font-size: 1.3rem; margin-bottom: 12px;">{star_str}</div>
-            </div>
-            """, unsafe_allow_html=True)
-            
-            # 학습 상태에 따른 곤충 아이콘화된 이동 버튼 설계
-            if stars == 3:
-                btn_label = f"{bug['icon']} {bug['nameEn']} 완료! 🎉"
-            elif stars > 0:
-                btn_label = f"{bug['icon']} {bug['nameEn']} 탐험 중! 👍"
-            else:
-                btn_label = f"{bug['icon']} {bug['nameEn']} 시작! 🚀"
-                
+            btn_label = f"{bug['icon']} {bug['nameEn']} 시작! 🚀"
             if st.button(btn_label, key=f"sel_bug_{key}", use_container_width=True):
                 st.session_state.selected_insect = key
                 st.session_state.current_view = "level"
@@ -398,14 +379,9 @@ def render_level_view():
             if st.button(btn_lbl, key=f"sel_lv_{idx}", use_container_width=True, type="primary" if idx == 0 else "secondary"):
                 st.session_state.selected_level = f"level{idx+1}"
                 st.session_state.story_page = 0
-                st.session_state.active_tab = "🐞 그림책 읽기"
+                st.session_state.active_tab = "그림책 읽기"
                 st.session_state.current_view = "learn"
                 st.rerun()
-
-    st.markdown("<br>", unsafe_allow_html=True)
-    if st.button("🐜 곤충도감 목록으로 돌아가기", use_container_width=True):
-        st.session_state.current_view = "home"
-        st.rerun()
 
 # 11. 학습 센터 메인 뷰 (5개 탭 바)
 def render_learn_view():
@@ -417,12 +393,12 @@ def render_learn_view():
     with s_col1:
         st.markdown(f"### {bug['icon']} {bug['nameEn']} ({bug['nameKo']}) <span style='font-size:1rem; background:var(--accent); color:black; padding:2px 10px; border-radius:12px; font-weight:bold; margin-left:12px;'>{level_lbl}</span>", unsafe_allow_html=True)
     with s_col2:
-        if st.button("🐛 난이도 변경", use_container_width=True):
+        if st.button("난이도 변경", use_container_width=True):
             st.session_state.current_view = "level"
             st.rerun()
 
     # 탭 네비게이션 컬럼 (곤충 아이콘화)
-    tabs_list = ["🐞 그림책 읽기", "🐜 단어 배우기", "🐝 퀴즈 풀기", "🦋 독후 활동", "🕷️ AI 곤충대화"]
+    tabs_list = ["그림책 읽기", "단어 배우기", "퀴즈 풀기", "독후 활동", "곤충지식"]
     tab_cols = st.columns(5)
     for idx, t_name in enumerate(tabs_list):
         with tab_cols[idx]:
@@ -433,15 +409,15 @@ def render_learn_view():
     st.markdown("---")
 
     # 각 탭에 따른 분기 렌더링
-    if st.session_state.active_tab == "🐞 그림책 읽기":
+    if st.session_state.active_tab == "그림책 읽기":
         render_book_tab(bug)
-    elif st.session_state.active_tab == "🐜 단어 배우기":
+    elif st.session_state.active_tab == "단어 배우기":
         render_words_tab(bug)
-    elif st.session_state.active_tab == "🐝 퀴즈 풀기":
+    elif st.session_state.active_tab == "퀴즈 풀기":
         render_quiz_tab(bug)
-    elif st.session_state.active_tab == "🦋 독후 활동":
+    elif st.session_state.active_tab == "독후 활동":
         render_activity_tab(bug)
-    elif st.session_state.active_tab == "🕷️ AI 곤충대화":
+    elif st.session_state.active_tab == "곤충지식":
         render_ai_tab(bug)
 
 # ① 탭: 양면 그림책 리딩
@@ -503,7 +479,7 @@ def render_book_tab(bug):
     st.markdown("<br>", unsafe_allow_html=True)
     nav_col1, nav_col2, nav_col3 = st.columns([1.2, 2, 1.2])
     with nav_col1:
-        if st.button("🐜 이전 책장", disabled=(st.session_state.story_page == 0), use_container_width=True):
+        if st.button("이전 책장", disabled=(st.session_state.story_page == 0), use_container_width=True):
             st.session_state.story_page = max(0, st.session_state.story_page - 2)
             st.rerun()
     with nav_col2:
@@ -511,13 +487,12 @@ def render_book_tab(bug):
         st.markdown(f"<div style='text-align:center; font-weight:bold; margin-top:8px;'>{st.session_state.story_page + 1}-{min(st.session_state.story_page + 2, total_p)} / {total_p} 페이지</div>", unsafe_allow_html=True)
     with nav_col3:
         is_end = st.session_state.story_page + 2 >= total_p
-        btn_txt = "🐝 완독 완료! ⭐" if is_end else "🦋 다음 책장"
+        btn_txt = "완독 완료! ⭐" if is_end else "다음 책장"
         if st.button(btn_txt, use_container_width=True, type="primary" if is_end else "secondary"):
             if is_end:
                 # 완독 기록 저장
                 insect_id = st.session_state.selected_insect
                 progress = user_data["progress"].get(insect_id, {"read": False, "quiz": False, "activity": False})
-                new_read = not progress.get("read")
                 progress["read"] = True
                 user_data["progress"][insect_id] = progress
                 save_user_progress(user_data)
@@ -525,7 +500,7 @@ def render_book_tab(bug):
                 st.success("책을 다 읽었습니다! 별 1개를 얻었어요! ⭐")
                 check_and_award_badges()
                 
-                st.session_state.active_tab = "🐜 단어 배우기"
+                st.session_state.active_tab = "단어 배우기"
                 st.rerun()
             else:
                 st.session_state.story_page += 2
@@ -579,6 +554,8 @@ def render_quiz_tab(bug):
         st.session_state.quiz_score = 0
     if "quiz_answered" not in st.session_state:
         st.session_state.quiz_answered = False
+    if "quiz_feedback" not in st.session_state:
+        st.session_state.quiz_feedback = None  # {"correct": bool, "message": str}
     
     q_idx = st.session_state.quiz_idx
     
@@ -590,26 +567,35 @@ def render_quiz_tab(bug):
         st.markdown(f"#### **{q['question']}**")
         ans = st.radio("정답을 선택하세요:", q["options"], index=None, key=f"st_quiz_{q_idx}")
         
+        # 이전 제출의 피드백 표시 (rerun 후에도 유지)
+        if st.session_state.quiz_feedback is not None:
+            fb = st.session_state.quiz_feedback
+            if fb["correct"]:
+                st.success(fb["message"])
+                fb_audio = generate_tts_audio("Great job!")
+            else:
+                st.error(fb["message"])
+                fb_audio = generate_tts_audio("Oops!")
+            if fb_audio:
+                st.audio(fb_audio, format="audio/mp3")
+        
         btn_q1, btn_q2 = st.columns(2)
         with btn_q1:
             if st.button("🐞 정답 제출!", use_container_width=True, disabled=(ans is None or st.session_state.quiz_answered)):
-                st.session_state.quiz_answered = True
                 correct_val = q["options"][q["answer"]]
                 if ans == correct_val:
                     st.session_state.quiz_score += 1
-                    st.success("🟢 정답입니다! 참 잘했어요!")
-                    fb_audio = generate_tts_audio("Great job!")
+                    st.session_state.quiz_feedback = {"correct": True, "message": "🟢 정답입니다! 참 잘했어요!"}
                 else:
-                    st.error(f"❌ 아쉬워요! 정답은 '{correct_val}' 입니다.")
-                    fb_audio = generate_tts_audio("Oops!")
-                if fb_audio:
-                    st.audio(fb_audio, format="audio/mp3")
+                    st.session_state.quiz_feedback = {"correct": False, "message": f"❌ 아쉬워요! 정답은 '{correct_val}' 입니다."}
+                st.session_state.quiz_answered = True
                 st.rerun()
                 
         with btn_q2:
             if st.button("🦋 다음 문제", use_container_width=True, disabled=not st.session_state.quiz_answered):
                 st.session_state.quiz_idx += 1
                 st.session_state.quiz_answered = False
+                st.session_state.quiz_feedback = None
                 st.rerun()
     else:
         # 퀴즈 종료 화면
@@ -624,7 +610,6 @@ def render_quiz_tab(bug):
         insect_id = st.session_state.selected_insect
         user_data["quiz_scores"][insect_id] = score
         progress = user_data["progress"].get(insect_id, {"read": False, "quiz": False, "activity": False})
-        new_quiz = not progress.get("quiz")
         progress["quiz"] = True
         user_data["progress"][insect_id] = progress
         save_user_progress(user_data)
@@ -639,14 +624,15 @@ def render_quiz_tab(bug):
             
         col_end1, col_end2 = st.columns(2)
         with col_end1:
-            if st.button("🐜 다시 풀기", use_container_width=True):
+            if st.button("다시 풀기", use_container_width=True):
                 st.session_state.quiz_idx = 0
                 st.session_state.quiz_score = 0
                 st.session_state.quiz_answered = False
+                st.session_state.quiz_feedback = None
                 st.rerun()
         with col_end2:
-            if st.button("🦋 독후 활동하기", use_container_width=True, type="primary"):
-                st.session_state.active_tab = "🦋 독후 활동"
+            if st.button("독후 활동하기", use_container_width=True, type="primary"):
+                st.session_state.active_tab = "독후 활동"
                 st.rerun()
 
 # ④ 탭: 독후 활동
@@ -678,8 +664,8 @@ def render_activity_tab(bug):
     st.write("💡 아래 문장 예시를 클릭해 직접 써보세요:")
     recom = [
         f"I like this {bug['nameEn'].lower()}.",
-        f"My {bug['nameEn'].lower()} is very pretty.",
-        f"Ladybugs have black spots."
+        f"The {bug['nameEn'].lower()} is my favorite insect.",
+        f"I learned about the {bug['nameEn'].lower()} today."
     ]
     for r in recom:
         st.markdown(f"- `{r}`")
@@ -692,7 +678,7 @@ def render_activity_tab(bug):
             st.audio(w_audio, format="audio/mp3")
 
     st.markdown("<br>", unsafe_allow_html=True)
-    if st.button("🐞 독후 활동 저장하고 완료! ⭐", type="primary", use_container_width=True):
+    if st.button("독후 활동 저장하고 완료! ⭐", type="primary", use_container_width=True):
         if not written:
             st.warning("영어 문장을 먼저 작성해 주세요!")
         else:
@@ -721,7 +707,6 @@ def render_activity_tab(bug):
             # 독후 활동 별 획득
             insect_id = st.session_state.selected_insect
             progress = user_data["progress"].get(insect_id, {"read": False, "quiz": False, "activity": False})
-            new_act = not progress.get("activity")
             progress["activity"] = True
             user_data["progress"][insect_id] = progress
             
@@ -729,34 +714,220 @@ def render_activity_tab(bug):
             st.success("작품이 학부모 갤러리에 저장되었습니다! 별 1개를 추가 획득했습니다! ⭐")
             check_and_award_badges("first_drawing")
             
-            st.session_state.active_tab = "🕷️ AI 곤충대화"
+            st.session_state.active_tab = "곤충지식"
             st.rerun()
 
-# ⑤ 탭: AI 곤충 친구 대화
+# ⑤ 탭: 곤충지식
 def render_ai_tab(bug):
-    st.markdown(f"### 🤖 {bug['nameKo']} 박사님과 대화방")
-    
     chat_key = st.session_state.selected_insect
+    
+    # 1. 한/영 언어 선택 레이아웃
+    col_title, col_lang = st.columns([3.2, 1.8])
+    with col_title:
+        st.markdown(f"### 🤖 {bug['nameKo']} 박사님과 대화방")
+    with col_lang:
+        chat_lang = st.radio("Language / 언어 설정", ["한국어 🇰🇷", "English 🇺🇸"], horizontal=True, key=f"lang_select_{chat_key}")
+        is_en = (chat_lang == "English 🇺🇸")
+    
+    default_msg_ko = f"안녕! 나는 {bug['nameKo']} 박사야 {bug['icon']}! 아래의 빠른 질문 버튼을 눌러 나에 대해 더 자세히 알아볼래?"
+    default_msg_en = f"Hello! I am Dr. {bug['nameEn']} {bug['icon']}! Would you like to know more about me by tapping the questions below?"
+    
     if chat_key not in st.session_state.chat_history:
         st.session_state.chat_history[chat_key] = [
-            {"role": "assistant", "content": f"안녕! 나는 {bug['nameKo']} 박사야 {bug['icon']}! 우리 친구에 대해 궁금한 점을 물어보거나 '동화 지어줘!'라고 해볼래?"}
+            {"role": "assistant", "content": default_msg_en if is_en else default_msg_ko}
         ]
+    else:
+        # 이력이 있는 경우, 첫 번째 인삿말 멘트를 동적으로 변경
+        first_msg = st.session_state.chat_history[chat_key][0]
+        if first_msg["role"] == "assistant":
+            if is_en and first_msg["content"] == default_msg_ko:
+                first_msg["content"] = default_msg_en
+            elif not is_en and first_msg["content"] == default_msg_en:
+                first_msg["content"] = default_msg_ko
 
-    # 빠른 질문 리스트
-    sug_map = {
-        "ladybug": ["무당벌레의 등껍질 점은 왜 있나요?", "무당벌레는 무얼 먹고 살아요?", "새로운 무당벌레 동화 들려줘!"],
-        "ant": ["개미는 무거운 짐을 어떻게 들어?", "개미집 아파트는 어떻게 생겼어?", "새로운 개미 동화 들려줘!"],
-        "butterfly": ["나비는 맛을 어떻게 느껴요?", "나비 가루는 무슨 역할을 해요?", "새로운 나비 동화 들려줘!"],
-        "honeybee": ["꿀벌들은 왜 춤을 춰요?", "꿀벌은 침 쏘면 어떻게 돼?", "새로운 꿀벌 동화 들려줘!"]
+    # 빠른 질문 리스트 (한국어 / 영어 맵)
+    sug_map_ko = {
+        "ladybug": [
+            "🔴 등껍질 점은 어떤 역할을 하나요?",
+            "🍃 주로 무엇을 먹고 사나요?",
+            "✈️ 날개와 비행 능력은 어떤가요?",
+            "❄️ 추운 겨울은 어떻게 보내나요?",
+            "📅 수명은 얼마나 되나요?"
+        ],
+        "ant": [
+            "💪 무거운 짐을 어떻게 들 수 있나요?",
+            "🏢 땅속 개미집 구조는 어떤가요?",
+            "📡 서로 어떻게 의사소통 하나요?",
+            "💼 사회적 역할 분담은 어떻게 되나요?",
+            "👑 여왕개미의 수명과 역할은 무엇인가요?"
+        ],
+        "butterfly": [
+            "👅 몸의 어느 부위로 맛을 느끼나요?",
+            "✨ 날개 가루는 어떤 역할을 하나요?",
+            "🐛 한살이(번데기 과정 등)가 궁금해요.",
+            "🍯 주로 무엇을 먹고 사나요?",
+            "🍂 겨울나기와 수명은 어떻게 되나요?"
+        ],
+        "honeybee": [
+            "💃 왜 8자 모양 춤을 추나요?",
+            "🎯 침을 쏘면 왜 죽게 되나요?",
+            "❄️ 추운 겨울을 어떻게 보내나요?",
+            "🍎 자연과 우리에게 왜 중요한가요?",
+            "👑 여왕벌, 일벌, 수벌은 무슨 일을 하나요?"
+        ],
+        "beetle": [
+            "🪲 큰 뿔은 어떤 용도인가요?",
+            "🍂 무엇을 먹고 자라나요?",
+            "🌙 왜 주로 밤에 활동하나요?",
+            "💪 힘은 얼마나 강력한가요?",
+            "🐛 한살이 과정이 궁금해요."
+        ],
+        "dragonfly": [
+            "🚁 어떻게 공중정지와 후진 비행을 하나요?",
+            "👀 커다란 겹눈은 어떤 특징이 있나요?",
+            "💧 아기(약충)는 어디서 어떻게 사나요?",
+            "🦟 주로 어떤 먹이를 사냥하나요?",
+            "🪽 날개 속에 숨겨진 비밀은 무엇인가요?"
+        ],
+        "grasshopper": [
+            "🐸 어떻게 그렇게 높이 뛸 수 있나요?",
+            "🎵 어떻게 노래(소리)를 내나요?",
+            "🍃 몸의 색을 바꾸는 위장술이 있나요?",
+            "🌾 무엇을 먹고 사나요?",
+            "🦗 메뚜기 떼(황충)는 왜 생기나요?"
+        ],
+        "mantis": [
+            "🙏 왜 기도하는 자세를 취하나요?",
+            "🔄 머리를 어떻게 180도 돌릴 수 있나요?",
+            "⚔️ 사냥용 앞다리는 어떻게 쓰나요?",
+            "👁️ 특별한 눈(입체시)의 장점은 무엇인가요?",
+            "🌿 자연 속에서 어떤 역할을 하나요?"
+        ],
+        "cicada": [
+            "📢 어떻게 그렇게 우렁찬 소리를 내나요?",
+            "⏳ 애벌레는 땅속에서 얼마나 사나요?",
+            "👕 껍질을 벗고 나오는 과정이 궁금해요.",
+            "🌳 나무에 해를 끼치며 무얼 먹나요?",
+            "🎶 왜 수컷 매미만 노래를 부르나요?"
+        ],
+        "firefly": [
+            "💡 어떻게 스스로 빛을 낼 수 있나요?",
+            "❄️ 불빛이 왜 전혀 뜨겁지 않나요?",
+            "✨ 빛을 반짝이는 주된 이유는 무엇인가요?",
+            "🐌 아기(애벌레)는 무엇을 먹고 사나요?",
+            "🧪 깨끗한 곳에서만 살 수 있는 이유는 무엇인가요?"
+        ],
+        "stagbeetle": [
+            "🪵 머리에 달린 큰 턱은 무엇인가요?",
+            "⚔️ 수컷 사슴벌레는 큰 턱으로 무얼 하나요?",
+            "🍂 아기(굼벵이)는 나무 속에서 무얼 먹나요?",
+            "⏳ 장수풍뎅이보다 수명이 긴가요?",
+            "🌙 주로 밤에 무엇을 먹으러 다니나요?"
+        ],
+        "spider": [
+            "🕷️ 다리가 8개인데 왜 곤충이 아닌가요?",
+            "🕸️ 거미줄은 몸의 어디서 나오나요?",
+            "⛓️ 거미줄은 정말 강철보다 질긴가요?",
+            "🚶 끈적한 거미줄에 자기는 왜 안 붙나요?",
+            "🦟 자연에서 해충을 잡는 고마운 역할이 무엇인가요?"
+        ]
     }
-    sug_list = sug_map.get(chat_key, ["어디에 사나요?", "무엇을 먹고 살아요?", "재미있는 동화 들려줘!"])
 
-    st.write("💡 빠른 질문:")
-    s_cols = st.columns(3)
+    sug_map_en = {
+        "ladybug": [
+            "🔴 What is the role of the spots?",
+            "🍃 What do they usually eat?",
+            "✈️ How are their wings and flight?",
+            "❄️ How do they spend the cold winter?",
+            "📅 How long is their lifespan?"
+        ],
+        "ant": [
+            "💪 How can they lift heavy things?",
+            "🏢 What is the underground nest like?",
+            "📡 How do they communicate?",
+            "💼 How are their roles divided?",
+            "👑 What is the queen's role and lifespan?"
+        ],
+        "butterfly": [
+            "👅 Which body part tastes sweetness?",
+            "✨ What is the role of wing powder?",
+            "🐛 Tell me about their life cycle.",
+            "🍯 What do they usually drink?",
+            "🍂 How do they survive winter?"
+        ],
+        "honeybee": [
+            "💃 Why do they do the waggle dance?",
+            "🎯 Why do they die after stinging?",
+            "❄️ How do they spend the winter?",
+            "🍎 Why are they important to nature?",
+            "👑 What are the roles in the hive?"
+        ],
+        "beetle": [
+            "🪲 What is the big horn for?",
+            "🍂 What do they eat to grow?",
+            "🌙 Why are they active at night?",
+            "💪 How strong is their power?",
+            "🐛 What is their life cycle like?"
+        ],
+        "dragonfly": [
+            "🚁 How do they hover and fly backward?",
+            "👀 What are their compound eyes like?",
+            "💧 Where and how do babies live?",
+            "🦟 What prey do they hunt?",
+            "🪽 What is the secret of their wings?"
+        ],
+        "grasshopper": [
+            "🐸 How can they jump so high?",
+            "🎵 How do they make sounds?",
+            "🍃 Can they camouflage their color?",
+            "🌾 What do they eat?",
+            "🦗 Why do swarms of locusts form?"
+        ],
+        "mantis": [
+            "🙏 Why do they pose like praying?",
+            "🔄 How can they turn their heads 180°?",
+            "⚔️ How do they use front legs?",
+            "👁️ What is the benefit of 3D vision?",
+            "🌿 What role do they play in nature?"
+        ],
+        "cicada": [
+            "📢 How do they make such loud sounds?",
+            "⏳ How long do nymphs live underground?",
+            "👕 How do they emerge from their skins?",
+            "🌳 What do they eat from trees?",
+            "🎶 Why do only males sing?"
+        ],
+        "firefly": [
+            "💡 How do they make their own light?",
+            "❄️ Why is their light not hot?",
+            "✨ What is the main reason for blinking?",
+            "🐌 What do firefly larvae eat?",
+            "🧪 Why can they only live in clean areas?"
+        ],
+        "stagbeetle": [
+            "🪵 What is the big jaw on their head?",
+            "⚔️ What do males do with their jaws?",
+            "🍂 What do grubs eat inside wood?",
+            "⏳ Do they live longer than beetles?",
+            "🌙 Where do they look for sap at night?"
+        ],
+        "spider": [
+            "🕷️ Why is a spider not an insect?",
+            "🕸️ Where does spider silk come from?",
+            "⛓️ Is spider silk stronger than steel?",
+            "🚶 Why don't they stick to their web?",
+            "🦟 What is their helpful pest-control role?"
+        ]
+    }
+
+    sug_list = sug_map_en.get(chat_key, []) if is_en else sug_map_ko.get(chat_key, [])
+
+    st.write("💡 Quick Questions / 빠른 질문:")
+    s_cols = st.columns(5)
     for idx, s in enumerate(sug_list):
         with s_cols[idx]:
             if st.button(s, key=f"ai_sug_{idx}", use_container_width=True):
-                process_chat(s, chat_key, bug)
+                process_chat(s, chat_key, bug, is_en)
 
     st.markdown("---")
     # 대화 이력 렌더링
@@ -764,12 +935,7 @@ def render_ai_tab(bug):
         with st.chat_message(msg["role"]):
             st.markdown(msg["content"].replace("\n", "<br>"), unsafe_allow_html=True)
 
-    # 사용자 챗 입력창
-    user_q = st.chat_input("질문을 적어주세요...")
-    if user_q:
-        process_chat(user_q, chat_key, bug)
-
-def process_chat(question, chat_key, bug):
+def process_chat(question, chat_key, bug, is_en=False):
     st.session_state.chat_history[chat_key].append({"role": "user", "content": question})
     
     # 배지 획득 확인
@@ -780,7 +946,7 @@ def process_chat(question, chat_key, bug):
     
     if api_key:
         # 실시간 Gemini API 연동
-        response_text = call_gemini_python(api_key, question, bug)
+        response_text = call_gemini_python(api_key, question, bug, is_en)
     else:
         # 로컬 모의 AI 대답
         response_text = get_mock_response_python(question, bug)
@@ -788,23 +954,35 @@ def process_chat(question, chat_key, bug):
     st.session_state.chat_history[chat_key].append({"role": "assistant", "content": response_text})
     st.rerun()
 
-def call_gemini_python(api_key, prompt, bug):
+def call_gemini_python(api_key, prompt, bug, is_en=False):
     try:
         genai.configure(api_key=api_key)
         model = genai.GenerativeModel('gemini-1.5-flash')
-        system_instruction = f"""
-        너는 7세~10세 어린이를 위한 아주 친절하고 상냥한 곤충 박사 AI야. 이름은 "{bug['nameKo']} 박사"이고 말투는 귀여운 이모티콘을 많이 섞어서 '~했어!', '~란다' 처럼 말해야 해.
-        어린이 대상이므로 너무 어려운 전문 용어는 피하고 비유를 들어서 쉽게 설명해줘.
         
-        [미션]
-        1. 사용자가 질문하는 '{bug['nameEn']}({bug['nameKo']})'에 관한 자연과학적 호기심을 한글로 해결해준다.
-        2. 만약 질문이 "새로운 이야기 만들어줘" 또는 "영어 동화 들려줘"와 같이 스토리와 관련되어 있다면, 3~4문장 분량의 아주 쉬운 영어 그림책 버전을 영문으로 창작해준다. 그리고 그 밑에 한글 해석을 덧붙여 준다.
-           (예시 영어 문장 수준: "This is a little bee. It gathers golden honey. It shares honey with family. We love honey!")
-        """
+        # 언어 설정에 따른 프롬프트 지시문 분기
+        if is_en:
+            system_instruction = f"""
+            You are a very friendly and kind insect expert AI for kids aged 7 to 10. Your name is "Dr. {bug['nameEn']}".
+            Please answer in English! Use many cute emojis and a child-friendly tone like 'Oh!', 'Wow!', 'Indeed!'.
+            Avoid complex scientific jargon and explain using simple analogies.
+            
+            [Mission]
+            1. Solve the child's natural curiosity about '{bug['nameEn']}' in English.
+            2. Keep the answer clear, sweet, and limited to 3-5 sentences.
+            """
+        else:
+            system_instruction = f"""
+            너는 7세~10세 어린이를 위한 아주 친절하고 상냥한 곤충 박사 AI야. 이름은 "{bug['nameKo']} 박사"이고 말투는 귀여운 이모티콘을 많이 섞어서 '~했어!', '~란다' 처럼 말해야 해.
+            어린이 대상이므로 너무 어려운 전문 용어는 피하고 비유를 들어서 쉽게 설명해줘.
+            
+            [미션]
+            1. 사용자가 질문하는 '{bug['nameEn']}({bug['nameKo']})'에 관한 자연과학적 호기심을 한글로 해결해준다.
+            2. 만약 질문이 "새로운 이야기 만들어줘" 또는 "영어 동화 들려줘"와 같이 스토리와 관련되어 있다면, 3~4문장 분량의 아주 쉬운 영어 그림책 버전을 영문으로 창작해준다. 그리고 그 밑에 한글 해석을 덧붙여 준다.
+            """
         response = model.generate_content(f"{system_instruction}\n\n사용자 질문: {prompt}")
         return response.text
     except Exception as e:
-        return f"앗! AI 박사님과 인터넷 전화가 끊겼어 📞 (오류: {e}). 나중에 다시 질문해줄래?"
+        return f"앗! AI 박사님과 인터넷 전화가 끊겼어 📞 (오류: {e}). 나중에 다시 질문해줄래?" if not is_en else f"Oops! I lost connection with the expert 📞 (Error: {e}). Could you try again later?"
 
 def get_mock_response_python(question, bug):
     nameKo = bug["nameKo"]
@@ -815,23 +993,151 @@ def get_mock_response_python(question, bug):
     if "동화" in question or "이야기" in question or "story" in question or "Story" in question:
         return f"""📖 [오프라인 모의 {nameEn} 동화 이야기]<br><br>Once upon a time, a tiny {nameEn.lower()} named Happy lived in a big garden {icon}.<br>Every day, Happy sat on a green leaf and sang a sweet song.<br>"I am small, but I am strong!" Happy cheered.<br>The warm sun smiled down at the happy little friend ☀️.<br><br>*(옛날 옛적에, 해피라는 작은 {nameKo}가 큰 정원에 살고 있었습니다.<br>매일 해피는 초록 나뭇잎에 앉아 달콤한 노래를 불렀습니다.<br>"나는 작지만, 정말 힘이 세!" 해피는 기뻐했습니다.<br>따뜻한 태양이 행복한 작은 친구를 향해 미소 지었습니다.)*"""
 
-    # 키워드별 대답
+    # 키워드별 대답 (12종 곤충 각각 5개 키워드로 확장 - 한글 및 영어 동시 대응)
     mock_db = {
         "ladybug": {
-            "점": "무당벌레 날개의 검은 점들은 새 같은 무서운 적에게 '나를 먹으면 쓴 맛이 나니까 조심해!' 하고 경고하는 역할을 한단다 🛑. 신기하지?",
-            "먹": "무당벌레는 나뭇잎을 아프게 하는 나쁜 '진딧물'을 먹고 살아 😋. 농부 삼촌들을 돕는 아주 든든한 꼬마 경찰관이야!",
+            "역할": "무당벌레 등껍질의 화려한 색과 검은 점들은 새 같은 무서운 적에게 '나를 먹으면 아주 맛이 없고 독이 있어!' 하고 경고하는 껍질 방패 역할을 한단다 🛑. 이를 '경고색'이라고 해!",
+            "spots": "The bright red wings and black spots on a ladybug warn predators like birds that they taste terrible! 🛑 It acts like a protective shield.",
+            "무엇을 먹고": "무당벌레는 주로 식물에 해를 끼치는 나쁜 '진딧물'을 먹고 살아 😋. 농부 삼촌들이 엄청 고마워하는 꼬마 의사 선생님 같은 곤충이야!",
+            "eat": "Ladybugs love to eat tiny green insects called aphids. 😋 They protect plants from getting sick, making farmers very happy!",
+            "비행": "무당벌레는 딱딱한 빨간 날개(딱지날개) 밑에 얇고 투명한 진짜 날개를 고이 접어 숨겨두었다가, 날아갈 때 활짝 펼쳐서 열심히 퍼덕이며 날아다녀 ✈️!",
+            "wings": "Ladybugs have hard outer wings called elytra to protect their bodies, and soft inner wings underneath that fold out to fly! ✈️",
+            "겨울": "추운 겨울이 오면 차가운 바람을 피해 돌 밑이나 마른 낙엽 아래에 수백 마리씩 옹기종기 모여 서로 체온을 나누며 겨울잠을 잔단다 ❄️.",
+            "winter": "When winter comes, ladybugs gather in groups under rocks or logs to stay warm and sleep together until spring! ❄️",
+            "수명": "무당벌레의 수명은 어른벌레가 된 후 평균 2~3달 정도 산단다. 하지만 늦가을에 태어나 겨울잠을 자는 무당벌레들은 1년 가까이 살기도 해 📅!",
+            "lifespan": "A ladybug usually lives for 2 to 3 months as an adult, but those that hibernate in the winter can live up to a year! 📅"
         },
         "ant": {
-            "짐": "개미는 무척 작지만 자기 몸무게의 무려 50배가 넘는 먹이도 번쩍 들어 올릴 수 있는 엄청난 힘을 가졌어 💪!",
-            "집": "개미집은 땅속 깊은 곳에 여왕방, 알방, 먹이 저장실 등으로 나뉜 아주 큰 거실 아파트 모양을 하고 있어 🏢.",
+            "무거운": "개미는 무척 작지만 몸집에 비해 근육이 엄청나게 발달해서 자기 몸무게보다 50배나 더 무거운 나뭇잎이나 먹이도 번쩍 들어올릴 수 있어 💪!",
+            "lift": "Ants are super strong because their muscles are very powerful for their size. They can lift things that are 50 times heavier than them! 💪",
+            "구조": "땅속 개미집은 여왕개미가 사는 방, 아기 방, 먹이 보관소, 심지어 쓰레기장까지 따로 나뉘어 있는 거대하고 복잡한 아파트와 같단다 🏢.",
+            "nest": "An underground ant nest is like a giant apartment. 🏢 It has separate rooms for the queen, babies, food storage, and even trash!",
+            "의사소통": "개미는 입이 아니라 더듬이로 냄새 물질(페로몬)을 주고받으며 '이쪽에 먹이가 있어!', '위험해!' 하고 대화를 나눈단다 📡.",
+            "communicate": "Ants communicate by using their antennae to smell special chemical signals called pheromones. 📡 It's like sending text messages!",
+            "분담": "개미 사회는 알을 낳는 여왕개미, 집을 지키는 병정개미, 먹이를 구해오고 집을 고치는 일개미로 완벽하게 역할을 나누어 일해 💼.",
+            "roles": "Ants have clear jobs. The queen lays eggs, soldier ants guard the nest, and worker ants collect food and clean the home! 💼",
+            "여왕개미": "여왕개미는 왕국을 세우고 평생 알을 낳는데, 수명이 무려 10년에서 길게는 30년까지 살기도 하는 엄청난 장수 곤충이란다 👑!",
+            "queen": "The queen ant is the mother of the colony. She can live for 10 to 30 years, which is very long for an insect! 👑"
         },
         "butterfly": {
-            "가루": "나비 날개의 고운 가루는 빗물이 스며들지 않게 막아주는 방수 우산 역할을 한단다 ☔. 만지면 날개가 젖어 날 수 없으니 눈으로만 봐야 해!",
-            "맛": "나비는 입이 아니라 발로 달콤한 맛을 느껴 🦶. 꽃 위에 앉는 순간 맛있는 꽃인지 바로 안단다.",
+            "맛": "나비는 입이나 혀가 아니라 놀랍게도 다리 끝(발)로 맛을 느껴 🦶. 꽃 위에 사뿐히 앉아 발로 달콤한 꿀이 있는지 먼저 확인하는 거야!",
+            "tastes": "Butterflies actually taste food with their feet! 🦶 When they land on a flower, they know instantly if it has sweet nectar.",
+            "가루": "나비 날개 표면의 곱고 부드러운 가루는 비가 내릴 때 날개가 젖지 않도록 지켜주는 천연 방수 우산 역할을 한단다 ☔.",
+            "powder": "The fine powder on butterfly wings is made of tiny scales. They act like a raincoat to keep the wings dry so they can fly! ☔",
+            "한살이": "나비는 알에서 깨어나 열심히 나뭇잎을 먹는 애벌레가 되었다가, 딱딱한 번데기 속에서 몸을 아름다운 날개와 다리로 재탄생시키는 마법(변태)을 부려 🐛!",
+            "cycle": "A butterfly starts as an egg, becomes a hungry caterpillar, sleeps in a hard chrysalis, and transforms into a beautiful butterfly! 🐛",
+            "무엇을 먹고": "나비는 긴 빨대처럼 돌돌 말려 있는 입을 가지고 있어 🍯. 꽃 속에 입을 쏙 넣어서 달콤한 꽃꿀(네타)이나 과일 즙을 빨아먹는단다.",
+            "drink": "Butterflies have a long, straw-like tongue called a proboscis. 🍯 They use it to sip sweet nectar from deep inside flowers.",
+            "겨울나기": "나비 종류마다 겨울을 나는 방법이 달라. 번데기나 알 상태로 얼어붙지 않고 견디는 친구들도 있고, 네발나비처럼 어른 나비로 동굴에서 겨울을 나는 친구들도 있어 🍂.",
+            "survive": "Some butterflies spend the winter as eggs or pupae, while others migrate long distances or hide in warm places to sleep! 🍂"
         },
         "honeybee": {
-            "춤": "꿀벌들은 맛있는 꽃을 찾으면 엉덩이를 씰룩이며 8자 모양 춤을 춰서 다른 친구들에게 위치를 설명해 줘 💃!",
-            "침": "꿀벌은 정말 생명이 위험할 때 한 번 침을 쏘고, 그러면 침이 내장과 연결되어 있어서 스스로도 죽게 된단다 😢."
+            "춤": "꿀벌은 맛있는 꽃밭을 찾으면 벌집으로 돌아와 엉덩이를 흔들며 8자 모양으로 날아 💃. 춤의 각도와 속도로 꽃이 있는 방향과 거리를 동료들에게 정확히 알려준단다.",
+            "dance": "Honeybees perform a special 'waggle dance' in the shape of a figure-8 to tell other bees the exact direction and distance to flowers! 💃",
+            "침": "꿀벌의 침은 내장과 연결되어 있어서 침을 쏘고 도망치면 침이 몸에서 빠져나가 스스로 죽게 된단다 😢. 그래서 아주 위험할 때만 쏘는 거야.",
+            "stinging": "A honeybee's stinger is hooked to its internal organs. When it stings, the stinger pulls out, which sadly causes the bee to die. 😢",
+            "겨울": "겨울이 되면 일벌들은 여왕벌을 중심으로 둥글게 뭉쳐 몸을 부르르 떨며 열을 내 🔥. 이 열로 벌집 안을 따뜻하게 유지하면서 미리 모아둔 꿀을 먹으며 견뎌.",
+            "winter": "In winter, bees huddle together around the queen and vibrate their bodies to keep the hive warm while eating stored honey! ❄️",
+            "자연": "꿀벌이 꽃가루를 여기저기 옮겨주어 식물들이 열매를 맺을 수 있어 🍎. 꿀벌이 없다면 우리가 먹는 사과나 딸기 같은 과일도 먹기 힘들어져!",
+            "important": "Honeybees are crucial because they pollinate flowers, helping fruits and vegetables grow. Without them, we wouldn't have many foods! 🍎",
+            "역할": "여왕벌은 오직 알을 낳고, 수벌은 번식을 도우며, 모든 일(집 짓기, 꿀 모으기, 애벌레 기르기)은 부지런한 여자 일벌들이 전부 해낸단다 💼.",
+            "hive": "The queen lays eggs, male drones mate with the queen, and female worker bees do all the hard work like building nests and gathering honey! 👑"
+        },
+        "beetle": {
+            "뿔": "장수풍뎅이 수컷의 멋진 Y자 뿔은 밥그릇(수액)을 두고 싸우거나 여자친구를 만날 때 라이벌 장수풍뎅이를 번쩍 들어 던지는 무기로 사용한단다 🪲!",
+            "horn": "Male rhinoceros beetles use their big Y-shaped horns like shovels to wrestle and toss rival beetles off tree branches for food or mates! 🪲",
+            "먹고 자라": "애벌레 때는 썩은 나뭇잎이 흙이 된 '발효톱밥'을 먹으며 뚱뚱해지고, 멋진 성충이 되면 달콤한 나무 수액이나 과일을 먹고 살아 🍂.",
+            "eat": "Larvae eat decaying wood and leaves in the soil, while adult beetles enjoy drinking sweet, fermenting tree sap and eating ripe fruits! 🍂",
+            "밤에": "장수풍뎅이는 낮에는 시원한 낙엽 밑이나 흙속에 꼭꼭 숨어서 자고, 천적(새 등)이 잠을 자는 캄캄한 밤이 되면 활발하게 날아다니는 야행성 곤충이야 🌙.",
+            "active": "Rhinoceros beetles are nocturnal. They hide under soil or logs during the day and fly around at night when it is safer from predators! 🌙",
+            "힘": "장수풍뎅이는 곤충 세계의 천하장사야! 자기 몸무게의 무려 800배가 넘는 물건도 번쩍 들어올릴 수 있는 엄청난 파워를 가졌단다 💪.",
+            "strong": "Rhinoceros beetles are the weightlifters of the insect world! They can lift objects that are 850 times heavier than their own weight! 💪",
+            "과정이": "알에서 꼬물꼬물 애벌레로 태어나 몇 번 껍질을 벗으며 무럭무럭 자란 뒤, 번데기 방을 짓고 한 달 동안 꾹 참았다가 멋진 뿔을 가진 어른으로 탄생해 🐛!",
+            "cycle": "They start as eggs, grow into fat larvae (grubs), rest inside a pupal chamber, and finally hatch as strong adults with magnificent horns! 🐛"
+        },
+        "dragonfly": {
+            "비행": "잠자리는 4개의 날개를 따로따로 움직일 수 있는 최고의 헬리콥터야 🚁. 하늘에 딱 멈춰 서 있거나(정지비행), 심지어 뒤로 날 수도 있지!",
+            "hover": "Dragonflies can control their four wings independently. This allows them to fly forward, hover in the air, and even fly backward like a helicopter! 🚁",
+            "겹눈": "머리에 달린 엄청나게 큰 두 눈은 사실 약 3만 개의 작은 눈이 뭉친 '겹눈'이야 👀. 아주 빠른 벌레의 움직임도 모두 지켜볼 수 있단다.",
+            "eyes": "Their giant eyes are compound eyes, containing about 30,000 tiny lenses! 👀 They can see almost everything around them in 360 degrees.",
+            "약충": "아기 잠자리는 물속에 살면서 올챙이나 모기 애벌레(장구벌레)를 잡아먹는 무시무시한 물속 사냥꾼(수서약충)이란다 💧.",
+            "babies": "Baby dragonflies, called nymphs, live underwater for up to 2 years. They are fierce hunters that eat tadpoles and small fish! 💧",
+            "사냥": "잠자리는 하늘을 날아다니며 파리, 모기, 나비 등을 날카로운 발로 바구니처럼 낚아채서 강력한 턱으로 냠냠 맛있게 먹어치워 🦟.",
+            "hunt": "Dragonflies are skilled hunters. They catch flies, mosquitoes, and butterflies in mid-air using their legs like a basket! 🦟",
+            "날개": "잠자리의 얇고 투명한 날개에는 미세한 그물망 같은 날개맥이 가득 차 있어 🪽. 이 날개맥 덕분에 날개가 꺾이지 않고 엄청 튼튼하단다.",
+            "wings": "Dragonfly wings have complex nets of veins. These veins act like strong frames to keep the wings stiff and prevent them from breaking! 🪽"
+        },
+        "grasshopper": {
+            "높이": "메뚜기는 엄청나게 길고 튼튼한 뒷다리를 가졌어 🐸. 뒷다리 속 근육에 에너지를 용수철처럼 꾹 모았다가 튕겨내면 자기 몸길이의 20배 넘게 날아오를 수 있어!",
+            "jump": "Grasshoppers have powerful back legs. They store energy in their legs like a spring and launch themselves up to 20 times their body length! 🐸",
+            "노래": "메뚜기는 목청이 아니라, 튼튼한 뒷다리를 날개 깃 가장자리에 대고 슥슥 비벼서 아름답고 맑은 마찰 소리(음악)를 만들어 낸단다 🎵.",
+            "sounds": "Grasshoppers make a chirping sound by rubbing the ridges of their hind legs against their wings. 🎵 It's like playing a tiny violin!",
+            "위장술": "메뚜기는 자신이 사는 주변 풀숲과 똑같은 초록색이나 흙과 닮은 갈색 옷으로 몸 색깔을 맞춰 천적들의 눈을 속이는 완벽한 보호색을 써 🍃!",
+            "camouflage": "Grasshoppers use camouflage to blend in with green grass or brown dirt so that hungry frogs and birds cannot find them! 🍃",
+            "무엇을 먹": "메뚜기는 풀잎이나 벼 잎 같은 초록색 식물을 갉아먹고 사는 100% 채식주의(초식) 곤충이란다 🌾.",
+            "eat": "Grasshoppers are herbivores, meaning they eat leaves, grass, and crops with their strong chewing mouths. 🌾",
+            "황충": "메뚜기들이 너무 좁은 곳에 바글바글 많이 모여 살면, 몸빛이 어둡게 변하고 엄청나게 큰 날개가 돋아나 떼를 지어 날아가며 곡식을 다 먹어버리는 무서운 메뚜기 떼(황충)가 된단다 🦗.",
+            "swarms": "When grasshoppers crowd together, they can transform into locusts. They grow larger wings, change color, and fly in massive crop-eating swarms! 🦗"
+        },
+        "mantis": {
+            "기도": "사마귀가 두 앞다리를 공손히 가슴에 모으고 있는 모습이 마치 기도하는 것처럼 보이지만, 사실은 다가오는 먹이를 언제든지 낚아채려고 잔뜩 긴장해서 준비 동작을 하고 있는 거란다 🙏!",
+            "pose": "A praying mantis folds its front legs in a praying position to stay ready to strike and grab passing prey in a split second! 🙏",
+            "180도": "사마귀는 유일하게 목뼈가 유연하게 움직이는 곤충이야 🔄. 고개를 양옆과 뒤쪽까지 180도 부드럽게 돌려 주변을 넓게 경계할 수 있지!",
+            "180": "A mantis is the only insect that can turn its head 180 degrees! 🔄 This helps them look behind their shoulders to search for prey.",
+            "사냥용": "사마귀의 앞다리는 낫처럼 안쪽으로 굽어 있고 날카로운 가시가 촘촘하게 돋아 있어 ⚔️. 한 번 잡은 먹이는 절대 빠져나가지 못하는 무시무시한 사냥 도구지.",
+            "legs": "Their front legs are raptorial, meaning they are lined with sharp spines to grip and trap struggling insects tightly! ⚔️",
+            "장점": "두 눈이 얼굴 양끝에 멀리 떨어져 있어서 사물과의 거리를 입체적이고 정확하게 잴 수 있는 뛰어난 '입체시(3D vision)' 능력을 갖추었어 👁️!",
+            "vision": "Their wide-spaced compound eyes give them stereoscopic vision (3D vision) to measure the exact distance to their prey before striking! 👁️",
+            "역할": "사마귀는 농작물을 갉아먹는 나쁜 벌레들을 닥치는 대로 잡아먹어 풀과 꽃을 건강하게 지켜주는 정원의 훌륭한 꼬마 청소부(생물학적 방제)란다 🌿.",
+            "role": "Mantises eat pest insects like crickets and caterpillars, acting as natural protectors that keep garden plants healthy and green! 🌿"
+        },
+        "cicada": {
+            "우렁찬": "수컷 매미는 배 안에 있는 진동막(tymbal)을 1초에 수백 번 넘게 부르르 떨고, 비어 있는 통통한 배로 소리를 크게 울려서 확성기처럼 우렁찬 노래를 부른단다 📢!",
+            "loud": "Male cicadas vibrate special drum-like organs in their bellies called tymbals. Their hollow bellies amplify the sound like a speaker! 📢",
+            "얼마나": "종류에 따라 다르지만 매미 애벌레는 캄캄한 땅속에서 보통 3년, 5년, 혹은 길게는 17년 동안 나무뿌리 즙을 먹으며 자란단다 ⏳.",
+            "underground": "Cicada nymphs live underground for a very long time, usually 3, 5, or even 17 years, drinking sap from tree roots in the dark! ⏳",
+            "나오는": "여름 밤이 되면 기어 나와 단단한 나무껍질에 매달려 등을 쫙 가르고 나와 👕. 젖은 날개를 밤새 바짝 말리고 아침이 되면 하늘로 힘차게 날아가!",
+            "emerge": "On summer nights, nymphs climb up trees, crack open their old shells, and step out. They dry their soft wings and fly by morning! 👕",
+            "나무에": "매미는 단단한 빨대 같은 입을 나무 껍질에 꽂아 영양분이 가득한 수액(물관부 즙)을 쪽쪽 빨아먹고 산단다 🌳.",
+            "eat": "Cicadas use their straw-like mouths to pierce tree bark and drink sap from the tree's water-transporting tubes (xylem). 🌳",
+            "수컷만": "매미 소리는 수컷이 암컷 매미에게 '나 여기 있어, 나랑 친구 하자!' 하고 사랑을 고백하기 위해 부르는 세레나데 노래이기 때문에 수컷만 부른단다 🎶.",
+            "sing": "Only male cicadas sing. They make loud calls to attract female cicadas and say 'hello' to their mates during hot summer days! 🎶"
+        },
+        "firefly": {
+            "빛": "반딧불이 꽁무니에는 빛을 내는 특수한 물질(루시페린)과 산소가 만나 화학 반응을 일으키는 빛 공장이 있어서 스스로 아름다운 빛을 만들어 낼 수 있어 💡!",
+            "light": "Fireflies produce light in their tails through a chemical reaction between luciferin and oxygen. 💡 They make their own natural lanterns!",
+            "뜨겁지": "보통 전구는 켜두면 뜨거워지지만, 반딧불이가 만드는 빛은 에너지가 열로 변하지 않고 100% 빛으로만 바뀌는 아주 효율적인 '차가운 빛(냉광)'이라서 몸이 뜨거워지지 않아 ❄️.",
+            "hot": "Their light is highly efficient 'cold light,' meaning 100% of the energy becomes light, not heat, so their bodies never get burned! ❄️",
+            "이유": "캄캄한 어둠 속에서 '나 여기 있어!' 하고 짝꿍을 찾거나, 무서운 적에게 '나는 맛이 없으니까 잡아먹지 마!' 하고 경고하기 위해 반짝인단다 ✨.",
+            "blinking": "Fireflies blink their lights to talk to friends, find mates in the dark forest, and warn predators that they taste bad! ✨",
+            "애벌레": "아기 반딧불이는 물가나 습한 땅에 살면서 아주 느린 다슬기나 달팽이 같은 조개류의 살을 녹여 먹으며 자라는 육식 사냥꾼이야 🐌.",
+            "larvae": "Baby fireflies (larvae) live in wet soil and are active hunters. They eat slugs and snails by dissolving them! 🐌",
+            "깨끗한": "반딧불이는 작은 불빛 공해에도 짝꿍을 찾지 못하고, 물과 공기가 오염되면 금방 사라지는 아주 민감한 곤충이라서 우리 자연이 깨끗하다는 것을 보여주는 보물 같은 친구야 🧪!",
+            "clean": "Fireflies are very sensitive to light pollution and chemical sprays. They can only survive in clean, healthy environments! 🧪"
+        },
+        "stagbeetle": {
+            "닮았나요": "수컷 사슴벌레의 머리에는 나뭇가지처럼 멋지게 뻗은 커다란 집게 턱이 달려 있어 🪵. 이 모습이 사슴의 뿔(antlers)을 쏙 빼닮아서 사슴벌레라고 불려!",
+            "head": "Male stag beetles have massive jaws that look like deer antlers. 🪵 That is why they are called 'stag' beetles!",
+            "집게": "큰 턱은 밥을 먹는 입이 아니라, 장수풍뎅이나 다른 사슴벌레 라이벌과 영역을 다투거나 싸울 때 서로의 몸통을 꽉 꼬집어 던져버리는 무기 역할을 해 ⚔️.",
+            "jaws": "Their large jaws are not for eating. Males use them to pinch, lift, and throw rival beetles off trees during territorial fights! ⚔️",
+            "나무 속": "사슴벌레 아기는 쓰러져 썩어가는 참나무 속에 살면서 단단한 이빨로 썩은 우드 파이버(나무 섬유질)를 갉아먹고 소화시키며 굼벵이로 자라나 🍂.",
+            "wood": "Stag beetle grubs live inside rotting tree trunks, chewing on decaying wood fiber and recycling nutrients back into the forest soil! 🍂",
+            "긴가요": "장수풍뎅이는 어른이 되면 1~3달밖에 못 살지만, 사슴벌레는 성충이 된 후 춥고 배고픈 겨울철에도 나무 속에서 겨울잠을 자며 보통 1년에서 3년까지 훨씬 오래 살 수 있어 ⏳!",
+            "longer": "Stag beetles live much longer than rhinoceros beetles. They hibernate in winter and can live for 1 to 3 years as adults! ⏳",
+            "수액": "밤이 되면 사슴벌레는 껍질이 갈라진 참나무 줄기 위로 기어올라가 흘러나오는 달콤하고 톡 쏘는 나무 수액을 입가의 솔 모양 브러시로 핥아먹어 🌙.",
+            "sap": "At night, stag beetles climb oak trees to drink sweet tree sap using their brush-like mouths to lick the juice. 🌙"
+        },
+        "spider": {
+            "아닌가요": "거미는 다리가 8개인데 왜 곤충이 아닌가요?",
+            "insect": "Spiders have 2 body parts and 8 legs, while insects have 3 body parts and 6 legs. That's why spiders are arachnids, not insects! 🕷️",
+            "어디서": "거미 똥구멍 부근에 있는 '실돌기(spinnerets)'라는 방직 공장에서 액체 상태의 단백질 실이 나와 🕸️. 공기 중에 닿는 순간 굳어서 튼튼한 거미줄이 되지.",
+            "silk": "Spiders produce liquid silk from organs called spinnerets on their abdomen. It turns into solid thread when exposed to the air! 🕸️",
+            "질긴가요": "거미줄은 겉보기엔 약해 보이지만 같은 두께의 철사(강철)보다 무려 5배나 강하고 신축성이 뛰어나서 웬만큼 큰 벌레가 부딪쳐도 끊어지지 않고 꽉 잡아두지 ⛓️.",
+            "strong": "Spider silk is incredibly strong and elastic. Weight for weight, it is 5 times stronger than steel and doesn't break easily! ⛓️",
+            "안 붙나요": "거미줄은 끈적끈적한 방울이 묻은 가로선과, 끈적이지 않는 세로선이 있어. 거미는 끈적이지 않는 세로선만 골라서 조심조심 발을 디디며 다닌단다 🚶.",
+            "web": "Spiders only walk on the dry, non-sticky threads of their webs, and they have special oils on their feet to prevent sticking! 🚶",
+            "고마운": "거미는 파리, 모기, 진딧물, 바퀴벌레 등 우리 인간을 귀찮게 하고 식물을 괴롭히는 온갖 해충들을 거미줄로 다 잡아먹어 주는 자연 최고의 수호신 역할을 해 🦟!",
+            "control": "Spiders are helpful pest controllers. They capture annoying flies, mosquitoes, and cockroaches in their webs to keep our homes clean! 🦟"
         }
     }
 
@@ -840,7 +1146,7 @@ def get_mock_response_python(question, bug):
         if k in question:
             return v
             
-    return f"오! {nameKo}에 대한 좋은 질문이야 {icon}! 인터넷(Gemini API)에 연결되면 더 자세히 알려줄 수 있어. 숲속 곤충들은 참 신비롭단다!"
+    return f"오! {nameKo}에 대한 좋은 질문이야 {icon}! 인터넷(Gemini API)에 연결되면 더 자세히 알려줄 수 있어. 숲속 곤충들은 참 신비롭단다!" if not is_en else f"Oh! That's a great question about the {nameEn} {icon}! Once connected to the internet (Gemini API), I can tell you more details. Insects in the forest are so mysterious!"
 
 # 12. 학부모 인증 게이트 (구구단)
 def render_parent_gate_view():
@@ -878,7 +1184,7 @@ def render_parent_gate_view():
 
 # 13. 학부모 대시보드 뷰
 def render_parent_view():
-    st.markdown("## 👨‍👩‍👧 학부모 관리 대시보드 <span style='font-size:1rem; color:#888; font-weight:normal;'>v1.1</span>", unsafe_allow_html=True)
+    st.markdown("## 👨‍👩‍👧 학부모 관리 대시보드 <span style='font-size:1rem; color:#888; font-weight:normal;'>v1.1.1</span>", unsafe_allow_html=True)
     st.write("자녀의 곤충 영어 학습 이력과 직접 그린 그림 작품집을 확인할 수 있습니다.")
 
     # 1. 학습 통계 요약
