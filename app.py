@@ -29,7 +29,7 @@ except ImportError as e:
 
 # 2. 스트림릿 기본 페이지 설정
 st.set_page_config(
-    page_title="Bug Read & Play - 곤충 영어 나라",
+    page_title="Bug Read & Play - 곤충 영어 나라 V1.1",
     page_icon="🌿",
     layout="wide"
 )
@@ -47,23 +47,29 @@ st.markdown("""
     
     /* 곤충 카드 디자인 */
     .insect-card {
-        background: rgba(255, 255, 255, 0.8);
+        background: rgba(255, 255, 255, 0.85);
         border: 2px solid rgba(46, 125, 50, 0.15);
-        border-radius: 20px;
+        border-radius: 24px;
         padding: 24px;
         text-align: center;
-        box-shadow: 0 8px 16px rgba(46, 125, 50, 0.05);
-        transition: transform 0.3s ease;
+        box-shadow: 0 8px 16px rgba(46, 125, 50, 0.04);
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    .insect-card:hover {
+        transform: scale(1.05) translateY(-5px);
+        box-shadow: 0 16px 32px rgba(46, 125, 50, 0.1);
+        border-color: rgba(46, 125, 50, 0.35);
     }
     
     /* 책 스프레드 페이지 디자인 */
     .book-page-style-left {
         background: #ffffff;
-        border-radius: 16px;
+        border-radius: 20px 0 0 20px;
         padding: 36px 28px;
-        box-shadow: inset -8px 0 16px rgba(0,0,0,0.03), 0 8px 20px rgba(0,0,0,0.04);
-        border-right: 1px solid #e0e0e0;
-        min-height: 280px;
+        box-shadow: inset -10px 0 20px rgba(0,0,0,0.02), 0 8px 24px rgba(0,0,0,0.04);
+        border-right: 2px solid #efefef;
+        min-height: 290px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -71,11 +77,11 @@ st.markdown("""
     
     .book-page-style-right {
         background: #ffffff;
-        border-radius: 16px;
+        border-radius: 0 20px 20px 0;
         padding: 36px 28px;
-        box-shadow: inset 8px 0 16px rgba(0,0,0,0.03), 0 8px 20px rgba(0,0,0,0.04);
-        border-left: 1px solid #e0e0e0;
-        min-height: 280px;
+        box-shadow: inset 10px 0 20px rgba(0,0,0,0.02), 0 8px 24px rgba(0,0,0,0.04);
+        border-left: 2px solid #efefef;
+        min-height: 290px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -83,12 +89,51 @@ st.markdown("""
     
     /* 뱃지 캐비닛 */
     .badge-cabinet {
-        background: rgba(255, 255, 255, 0.7);
+        background: rgba(255, 255, 255, 0.75);
         border: 1px solid rgba(255, 255, 255, 0.5);
-        border-radius: 20px;
+        border-radius: 24px;
         padding: 24px;
-        box-shadow: 0 8px 32px 0 rgba(46, 125, 50, 0.08);
+        box-shadow: 0 8px 32px 0 rgba(46, 125, 50, 0.06);
         margin-top: 32px;
+    }
+    
+    /* Streamlit 기본 버튼 커스텀 (곤충 마이크로 애니메이션) */
+    div.stButton > button {
+        border-radius: 24px !important;
+        font-weight: 600 !important;
+        font-family: 'Fredoka', 'Noto Sans KR', sans-serif !important;
+        border: 2px solid rgba(46, 125, 50, 0.2) !important;
+        background-color: white !important;
+        color: #2e7d32 !important;
+        padding: 6px 16px !important;
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+        box-shadow: 0 4px 6px rgba(46, 125, 50, 0.05) !important;
+    }
+    
+    div.stButton > button:hover {
+        transform: scale(1.08) translateY(-3px) !important;
+        box-shadow: 0 8px 16px rgba(46, 125, 50, 0.15) !important;
+        border-color: #2e7d32 !important;
+        background-color: #e8f5e9 !important;
+        color: #1b5e20 !important;
+    }
+    
+    /* primary 버튼 커스텀 */
+    div.stButton > button[kind="primary"] {
+        background-color: #2e7d32 !important;
+        color: white !important;
+        border: 2px solid #2e7d32 !important;
+    }
+    
+    div.stButton > button[kind="primary"]:hover {
+        background-color: #1b5e20 !important;
+        border-color: #1b5e20 !important;
+        color: white !important;
+    }
+    
+    /* 탭 디자인 커스텀 (Streamlit 기본 탭 선택기 숨기기 혹은 커스텀용) */
+    .stTabs [data-baseweb="tab-list"] {
+        gap: 8px;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -107,13 +152,7 @@ insects_data = load_insects_data()
 
 def load_user_progress():
     path = "data/user_progress.json"
-    if os.path.exists(path):
-        try:
-            with open(path, "r", encoding="utf-8") as f:
-                return json.load(f)
-        except Exception:
-            pass
-    return {
+    default_progress = {
         "stars": {},
         "progress": {},       # insect_id -> {read: bool, quiz: bool, activity: bool}
         "learned_words": {},  # insect_id -> list of words
@@ -122,6 +161,22 @@ def load_user_progress():
         "saved_activities": [], # list of dict {insectId, levelId, drawing, text, date}
         "gemini_api_key": ""
     }
+    if os.path.exists(path):
+        try:
+            with open(path, "r", encoding="utf-8") as f:
+                loaded = json.load(f)
+                # 데이터 정합성 보장 (누락 키 자동 복구)
+                for key, val in default_progress.items():
+                    if key not in loaded:
+                        loaded[key] = val
+                return loaded
+        except Exception:
+            # 파일이 손상되었을 경우 백업 생성 후 리셋
+            try:
+                os.rename(path, path + ".corrupted_bak")
+            except Exception:
+                pass
+    return default_progress
 
 def save_user_progress(data):
     os.makedirs("data", exist_ok=True)
@@ -138,7 +193,7 @@ if "selected_insect" not in st.session_state:
 if "selected_level" not in st.session_state:
     st.session_state.selected_level = "level1"
 if "active_tab" not in st.session_state:
-    st.session_state.active_tab = "📖 그림책 읽기"
+    st.session_state.active_tab = "🐞 그림책 읽기"
 if "story_page" not in st.session_state:
     st.session_state.story_page = 0
 if "chat_history" not in st.session_state:
@@ -214,31 +269,42 @@ def render_header():
         if stars == 3:
             completed_bugs += 1
 
-    h_col1, h_col2, h_col3 = st.columns([3, 2, 1])
+    h_col1, h_col2, h_col3 = st.columns([4, 3, 2.5])
     with h_col1:
         st.markdown(
-            f"<h2 style='margin:0; font-family:var(--font-fun); cursor:pointer;' onclick='window.location.reload()'>🌿 Bug Read & Play</h2>", 
+            f"<h2 style='margin:0; font-family:var(--font-fun); cursor:pointer;' onclick='window.location.reload()'>🌿 Bug Read & Play <span style='font-size:0.9rem; background:#2e7d32; color:white; padding:2px 8px; border-radius:12px; vertical-align:middle; font-weight:bold; margin-left:6px;'>V1.1</span></h2>", 
             unsafe_allow_html=True
         )
     with h_col2:
         st.markdown(
-            f"<div style='font-size:1.2rem; font-weight:bold; margin-top:8px;'>⭐ {total_stars} 개 | 🐞 {completed_bugs}/{len(insects_data)} 도감 완료</div>",
+            f"<div style='font-size:1.15rem; font-weight:bold; margin-top:8px;'>⭐ {total_stars} 개 | 🐞 {completed_bugs}/{len(insects_data)} 도감 완료</div>",
             unsafe_allow_html=True
         )
     with h_col3:
-        if st.session_state.current_view in ["parent", "parent_gate"]:
-            if st.button("🧒 어린이 홈", use_container_width=True):
+        btn_col1, btn_col2 = st.columns(2)
+        with btn_col1:
+            is_home_active = st.session_state.current_view != "home"
+            if st.button("🐞 홈", use_container_width=True, disabled=not is_home_active, key="header_home_btn"):
                 st.session_state.current_view = "home"
+                st.session_state.selected_insect = None
+                st.session_state.story_page = 0
                 st.rerun()
-        else:
-            if st.button("👨‍👩‍👧 부모 화면", use_container_width=True):
-                st.session_state.current_view = "parent_gate"
-                st.rerun()
+        with btn_col2:
+            if st.session_state.current_view in ["parent", "parent_gate"]:
+                if st.button("🐜 자녀 홈", use_container_width=True, key="header_child_home_btn"):
+                    st.session_state.current_view = "home"
+                    st.session_state.selected_insect = None
+                    st.session_state.story_page = 0
+                    st.rerun()
+            else:
+                if st.button("🐝 부모방", use_container_width=True, key="header_parent_btn"):
+                    st.session_state.current_view = "parent_gate"
+                    st.rerun()
     st.markdown("---")
 
 # 9. 메인 홈 뷰 (곤충 카드 및 배지 진열장)
 def render_home_view():
-    st.markdown("<div style='text-align:center; margin-bottom: 24px;'><h1>🐞 곤충 영어 리딩 나라에 온 것을 환영해요!</h1><p>원하는 곤충을 골라 리딩과 재미있는 독후 활동을 시작해 보세요.</p></div>", unsafe_allow_html=True)
+    st.markdown("<div style='text-align:center; margin-bottom: 24px;'><h1>🐞 곤충 영어 리딩 나라 V1.1</h1><p>더 깜찍해진 곤충 친구들과 함께 즐거운 영어 리딩과 독후 활동을 시작해 보세요.</p></div>", unsafe_allow_html=True)
     
     # 곤충 카드 그리드 (3열 배치)
     cols = st.columns(3)
@@ -258,11 +324,13 @@ def render_home_view():
             </div>
             """, unsafe_allow_html=True)
             
-            btn_label = f"{bug['nameEn']} 시작하기"
+            # 학습 상태에 따른 곤충 아이콘화된 이동 버튼 설계
             if stars == 3:
-                btn_label = f"{bug['nameEn']} 완료! 🎉"
+                btn_label = f"{bug['icon']} {bug['nameEn']} 완료! 🎉"
             elif stars > 0:
-                btn_label = f"{bug['nameEn']} 학습 중 👍"
+                btn_label = f"{bug['icon']} {bug['nameEn']} 탐험 중! 👍"
+            else:
+                btn_label = f"{bug['icon']} {bug['nameEn']} 시작! 🚀"
                 
             if st.button(btn_label, key=f"sel_bug_{key}", use_container_width=True):
                 st.session_state.selected_insect = key
@@ -322,16 +390,20 @@ def render_level_view():
                 </div>
             </div>
             """, unsafe_allow_html=True)
+            # 난이도별 곤충 성장단계에 맞춘 아이콘화 (애벌레 -> 일개미 -> 일벌 -> 나비)
+            lv_icons = ["🐛", "🐜", "🐝", "🦋"]
+            btn_lbl = f"{lv_icons[idx]} {lv} 출발!"
+            
             st.markdown("<div style='margin-bottom:12px;'></div>", unsafe_allow_html=True)
-            if st.button(f"{lv} 읽기 시작", key=f"sel_lv_{idx}", use_container_width=True, type="primary" if idx == 0 else "secondary"):
+            if st.button(btn_lbl, key=f"sel_lv_{idx}", use_container_width=True, type="primary" if idx == 0 else "secondary"):
                 st.session_state.selected_level = f"level{idx+1}"
                 st.session_state.story_page = 0
-                st.session_state.active_tab = "📖 그림책 읽기"
+                st.session_state.active_tab = "🐞 그림책 읽기"
                 st.session_state.current_view = "learn"
                 st.rerun()
 
     st.markdown("<br>", unsafe_allow_html=True)
-    if st.button("⬅️ 곤충 목록으로 돌아가기", use_container_width=True):
+    if st.button("🐜 곤충도감 목록으로 돌아가기", use_container_width=True):
         st.session_state.current_view = "home"
         st.rerun()
 
@@ -341,16 +413,16 @@ def render_learn_view():
     level_lbl = {"level1":"Level 1","level2":"Level 2","level3":"Level 3","level4":"Level 4"}[st.session_state.selected_level]
     
     # 상단 곤충 요약 바
-    s_col1, s_col2 = st.columns([4, 1])
+    s_col1, s_col2 = st.columns([4, 1.2])
     with s_col1:
         st.markdown(f"### {bug['icon']} {bug['nameEn']} ({bug['nameKo']}) <span style='font-size:1rem; background:var(--accent); color:black; padding:2px 10px; border-radius:12px; font-weight:bold; margin-left:12px;'>{level_lbl}</span>", unsafe_allow_html=True)
     with s_col2:
-        if st.button("⚙️ 난이도 변경", use_container_width=True):
+        if st.button("🐛 난이도 변경", use_container_width=True):
             st.session_state.current_view = "level"
             st.rerun()
 
-    # 탭 네비게이션 컬럼
-    tabs_list = ["📖 그림책 읽기", "🔤 단어 배우기", "🧠 정답 퀴즈", "🎨 독후 활동", "🤖 AI 곤충 대화"]
+    # 탭 네비게이션 컬럼 (곤충 아이콘화)
+    tabs_list = ["🐞 그림책 읽기", "🐜 단어 배우기", "🐝 퀴즈 풀기", "🦋 독후 활동", "🕷️ AI 곤충대화"]
     tab_cols = st.columns(5)
     for idx, t_name in enumerate(tabs_list):
         with tab_cols[idx]:
@@ -361,15 +433,15 @@ def render_learn_view():
     st.markdown("---")
 
     # 각 탭에 따른 분기 렌더링
-    if st.session_state.active_tab == "📖 그림책 읽기":
+    if st.session_state.active_tab == "🐞 그림책 읽기":
         render_book_tab(bug)
-    elif st.session_state.active_tab == "🔤 단어 배우기":
+    elif st.session_state.active_tab == "🐜 단어 배우기":
         render_words_tab(bug)
-    elif st.session_state.active_tab == "🧠 정답 퀴즈":
+    elif st.session_state.active_tab == "🐝 퀴즈 풀기":
         render_quiz_tab(bug)
-    elif st.session_state.active_tab == "🎨 독후 활동":
+    elif st.session_state.active_tab == "🦋 독후 활동":
         render_activity_tab(bug)
-    elif st.session_state.active_tab == "🤖 AI 곤충 대화":
+    elif st.session_state.active_tab == "🕷️ AI 곤충대화":
         render_ai_tab(bug)
 
 # ① 탭: 양면 그림책 리딩
@@ -396,10 +468,12 @@ def render_book_tab(bug):
             <div></div>
         </div>
         """, unsafe_allow_html=True)
-        # 발음 오디오 재생
+        # 발음 오디오 재생 및 예외 안내
         audio_bytes = generate_tts_audio(left_text)
         if audio_bytes:
             st.audio(audio_bytes, format="audio/mp3")
+        else:
+            st.caption("🔇 오디오를 불러올 수 없습니다. (인터넷 연결을 확인해 주세요)")
 
     # 오른쪽 페이지
     with col2:
@@ -416,6 +490,8 @@ def render_book_tab(bug):
             audio_bytes_r = generate_tts_audio(right_text)
             if audio_bytes_r:
                 st.audio(audio_bytes_r, format="audio/mp3")
+            else:
+                st.caption("🔇 오디오를 불러올 수 없습니다. (인터넷 연결을 확인해 주세요)")
         else:
             st.markdown(f"""
             <div class="book-page-style-right" style="justify-content:center; align-items:center; text-align:center;">
@@ -423,11 +499,11 @@ def render_book_tab(bug):
             </div>
             """, unsafe_allow_html=True)
 
-    # 이전/다음 페이지 내비게이션
+    # 이전/다음 페이지 내비게이션 (곤충 아이콘화)
     st.markdown("<br>", unsafe_allow_html=True)
-    nav_col1, nav_col2, nav_col3 = st.columns([1, 2, 1])
+    nav_col1, nav_col2, nav_col3 = st.columns([1.2, 2, 1.2])
     with nav_col1:
-        if st.button("⬅️ 이전 책장", disabled=(st.session_state.story_page == 0), use_container_width=True):
+        if st.button("🐜 이전 책장", disabled=(st.session_state.story_page == 0), use_container_width=True):
             st.session_state.story_page = max(0, st.session_state.story_page - 2)
             st.rerun()
     with nav_col2:
@@ -435,7 +511,7 @@ def render_book_tab(bug):
         st.markdown(f"<div style='text-align:center; font-weight:bold; margin-top:8px;'>{st.session_state.story_page + 1}-{min(st.session_state.story_page + 2, total_p)} / {total_p} 페이지</div>", unsafe_allow_html=True)
     with nav_col3:
         is_end = st.session_state.story_page + 2 >= total_p
-        btn_txt = "🎉 다 읽었어요!" if is_end else "다음 책장 ➡️"
+        btn_txt = "🐝 완독 완료! ⭐" if is_end else "🦋 다음 책장"
         if st.button(btn_txt, use_container_width=True, type="primary" if is_end else "secondary"):
             if is_end:
                 # 완독 기록 저장
@@ -449,7 +525,7 @@ def render_book_tab(bug):
                 st.success("책을 다 읽었습니다! 별 1개를 얻었어요! ⭐")
                 check_and_award_badges()
                 
-                st.session_state.active_tab = "🔤 단어 배우기"
+                st.session_state.active_tab = "🐜 단어 배우기"
                 st.rerun()
             else:
                 st.session_state.story_page += 2
@@ -471,16 +547,20 @@ def render_words_tab(bug):
                 st.markdown(f"#### **{w['meaning']}**")
                 st.info(f"💡 예문: {w['example']}")
                 
-                # 발음 재생
+                # 발음 재생 및 오프라인 예외 처리
                 w_audio = generate_tts_audio(w['word'])
                 if w_audio:
                     st.write("단어 발음:")
                     st.audio(w_audio, format="audio/mp3")
+                else:
+                    st.caption("🔇 단어 발음 오프라인 상태")
                 
                 ex_audio = generate_tts_audio(w['example'])
                 if ex_audio:
                     st.write("예문 듣기:")
                     st.audio(ex_audio, format="audio/mp3")
+                else:
+                    st.caption("🔇 예문 오프라인 상태")
 
                 # 학습 완료 기록
                 if w['word'] not in learned:
@@ -512,7 +592,7 @@ def render_quiz_tab(bug):
         
         btn_q1, btn_q2 = st.columns(2)
         with btn_q1:
-            if st.button("정답 제출", use_container_width=True, disabled=(ans is None or st.session_state.quiz_answered)):
+            if st.button("🐞 정답 제출!", use_container_width=True, disabled=(ans is None or st.session_state.quiz_answered)):
                 st.session_state.quiz_answered = True
                 correct_val = q["options"][q["answer"]]
                 if ans == correct_val:
@@ -527,7 +607,7 @@ def render_quiz_tab(bug):
                 st.rerun()
                 
         with btn_q2:
-            if st.button("다음 문제 ➡️", use_container_width=True, disabled=not st.session_state.quiz_answered):
+            if st.button("🦋 다음 문제", use_container_width=True, disabled=not st.session_state.quiz_answered):
                 st.session_state.quiz_idx += 1
                 st.session_state.quiz_answered = False
                 st.rerun()
@@ -559,14 +639,14 @@ def render_quiz_tab(bug):
             
         col_end1, col_end2 = st.columns(2)
         with col_end1:
-            if st.button("다시 풀기 🔄", use_container_width=True):
+            if st.button("🐜 다시 풀기", use_container_width=True):
                 st.session_state.quiz_idx = 0
                 st.session_state.quiz_score = 0
                 st.session_state.quiz_answered = False
                 st.rerun()
         with col_end2:
-            if st.button("🎨 다음 단계: 독후 활동하기", use_container_width=True, type="primary"):
-                st.session_state.active_tab = "🎨 독후 활동"
+            if st.button("🦋 독후 활동하기", use_container_width=True, type="primary"):
+                st.session_state.active_tab = "🦋 독후 활동"
                 st.rerun()
 
 # ④ 탭: 독후 활동
@@ -606,13 +686,13 @@ def render_activity_tab(bug):
         
     written = st.text_input("여기에 직접 타이핑해 보세요:", placeholder="I like ladybugs.")
     
-    if st.button("🔊 작성한 영어 문장 소리로 들어보기", disabled=not written):
+    if st.button("🐝 문장 소리 듣기", disabled=not written):
         w_audio = generate_tts_audio(written)
         if w_audio:
             st.audio(w_audio, format="audio/mp3")
 
     st.markdown("<br>", unsafe_allow_html=True)
-    if st.button("🎉 독후 활동 완료 및 보관함 저장하기", type="primary", use_container_width=True):
+    if st.button("🐞 독후 활동 저장하고 완료! ⭐", type="primary", use_container_width=True):
         if not written:
             st.warning("영어 문장을 먼저 작성해 주세요!")
         else:
@@ -649,7 +729,7 @@ def render_activity_tab(bug):
             st.success("작품이 학부모 갤러리에 저장되었습니다! 별 1개를 추가 획득했습니다! ⭐")
             check_and_award_badges("first_drawing")
             
-            st.session_state.active_tab = "🤖 AI 곤충 대화"
+            st.session_state.active_tab = "🕷️ AI 곤충대화"
             st.rerun()
 
 # ⑤ 탭: AI 곤충 친구 대화
@@ -777,7 +857,7 @@ def render_parent_gate_view():
     
     col1, col2 = st.columns(2)
     with col1:
-        if st.button("확인", use_container_width=True, type="primary"):
+        if st.button("🐜 확인", use_container_width=True, type="primary"):
             if ans_input == st.session_state.g_ans:
                 st.session_state.current_view = "parent"
                 # 변수 초기화
@@ -788,7 +868,7 @@ def render_parent_gate_view():
             else:
                 st.error("오답입니다! 어린이는 올 수 없어요.")
     with col2:
-        if st.button("돌아가기", use_container_width=True):
+        if st.button("🕷️ 돌아가기", use_container_width=True):
             st.session_state.current_view = "home"
             if "g_num1" in st.session_state:
                 del st.session_state.g_num1
@@ -798,7 +878,7 @@ def render_parent_gate_view():
 
 # 13. 학부모 대시보드 뷰
 def render_parent_view():
-    st.markdown("## 👨‍👩‍👧 학부모 관리 대시보드")
+    st.markdown("## 👨‍👩‍👧 학부모 관리 대시보드 <span style='font-size:1rem; color:#888; font-weight:normal;'>v1.1</span>", unsafe_allow_html=True)
     st.write("자녀의 곤충 영어 학습 이력과 직접 그린 그림 작품집을 확인할 수 있습니다.")
 
     # 1. 학습 통계 요약
@@ -852,7 +932,7 @@ def render_parent_view():
                         
                     st.write(f"✍️ *\"{act['text']}\"*")
                     
-                    if st.button("삭제", key=f"del_act_{g_idx}"):
+                    if st.button("🗑️ 삭제", key=f"del_act_{g_idx}"):
                         activities.pop(g_idx)
                         user_data["saved_activities"] = activities
                         # 별 차감 로직 연계
@@ -876,13 +956,13 @@ def render_parent_view():
         
         save_btn, del_btn = st.columns(2)
         with save_btn:
-            if st.button("API 키 저장", use_container_width=True):
+            if st.button("🐞 API 키 저장", use_container_width=True):
                 user_data["gemini_api_key"] = key_input
                 save_user_progress(user_data)
                 st.success("API 키가 저장되었습니다.")
                 st.rerun()
         with del_btn:
-            if st.button("API 키 삭제", use_container_width=True, disabled=not curr_key):
+            if st.button("🕷️ API 키 삭제", use_container_width=True, disabled=not curr_key):
                 user_data["gemini_api_key"] = ""
                 save_user_progress(user_data)
                 st.success("API 키가 제거되었습니다.")
